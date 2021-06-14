@@ -14,6 +14,7 @@ class RedirectionViewController: UIViewController {
     }
 }
 
+//MARK: - Setup Observer
 private extension RedirectionViewController {
     
     private func setupObserver() {

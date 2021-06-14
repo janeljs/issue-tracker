@@ -25,25 +25,14 @@ class IssueListViewController: UIViewController {
     }
 }
 
+//MARK: - Setup
 private extension IssueListViewController {
     
     private func setMainView() {
         setupIssueFilterButton()
         setupRefreshControl()
     }
-    
-    private func setupIssueFilterButton() {
-        issueFilterButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let filterVC = self?.storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) else { return }
-                self?.present(filterVC, animated: true, completion: nil)
-            }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setupDelegate() {
-        issueCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
-    }
-    
+
     private func setupRefreshControl() {
         issueCollectionView.refreshControl = UIRefreshControl()
         issueCollectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .allEvents)
@@ -54,8 +43,13 @@ private extension IssueListViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+
+    private func setupDelegate() {
+        issueCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+    }
 }
 
+//MARK: - Bind
 private extension IssueListViewController {
     
     private func bind() {
@@ -80,7 +74,20 @@ private extension IssueListViewController {
     }
 }
 
+//MARK: - Action
 private extension IssueListViewController {
+    
+    private func setupIssueFilterButton() {
+        issueFilterButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToNextVC()
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func moveToNextVC() {
+        guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) else { return }
+        present(filterVC, animated: true, completion: nil)
+    }
     
     @objc private func refresh() {
         setupSearchController()
@@ -88,6 +95,7 @@ private extension IssueListViewController {
     }
 }
 
+//MARK: - CollectionViewDelegate
 extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

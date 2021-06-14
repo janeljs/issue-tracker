@@ -43,16 +43,24 @@ class FilterCell: UITableViewCell {
     }
 }
 
+//MARK: - Setup Contraints
 private extension FilterCell {
     
     private func setupSubViews() {
+        setupContentLabel()
+        setupSelectedView()
+    }
+    
+    private func setupContentLabel() {
         addSubview(contentLabel)
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
         contentLabel.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        
+    }
+    
+    private func setupSelectedView() {
         addSubview(selectedCheck)
         selectedCheck.translatesAutoresizingMaskIntoConstraints = false
         selectedCheck.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true

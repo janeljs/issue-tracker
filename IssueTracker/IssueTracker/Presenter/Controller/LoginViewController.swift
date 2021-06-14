@@ -10,13 +10,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
+        setupButtonAction()
     }
 }
 
+//MARK: - Setup Button Action
 private extension LoginViewController {
     
-    private func setupButton() {
+    private func setupButtonAction() {
         setupLoginButton()
         setupGithubLoginButton()
     }

@@ -20,18 +20,18 @@ class FilterIssueViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMainView()
+        setupFilterTableView()
+        setupButtonAction()
         bind()
     }
 }
 
+//MARK: - Setup Button Action
 private extension FilterIssueViewController {
     
-    private func setupMainView() {
+    private func setupButtonAction() {
         setupIssueCancelButton()
         setupIssueSaveButton()
-        setupDataSource()
-        setupFilterTableView()
     }
     
     private func setupIssueCancelButton() {
@@ -47,19 +47,29 @@ private extension FilterIssueViewController {
                 self?.dismiss(animated: true, completion: nil)
             }).disposed(by: rx.disposeBag)
     }
+}
+
+//MARK: - Setup Table View
+private extension FilterIssueViewController {
     
-    private func setupDataSource() {
+    private func setupFilterTableView() {
+        setupTableViewDataSource()
+        setupTableViewDelegate()
+    }
+    
+    private func setupTableViewDataSource() {
         dataSource.titleForHeaderInSection = { dataSource, indexPath in
             return dataSource.sectionModels[indexPath].header
         }
     }
     
-    private func setupFilterTableView() {
+    private func setupTableViewDelegate() {
         filterTableView.register(FilterCell.self, forCellReuseIdentifier: FilterCell.identifier)
         filterTableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
     }
 }
 
+//MARK: - Bind
 private extension FilterIssueViewController {
     
     private func bind() {
