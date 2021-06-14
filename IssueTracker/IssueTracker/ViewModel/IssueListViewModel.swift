@@ -15,6 +15,7 @@ class IssueListViewModel: NSObject {
     override init() {
         super.init()
         setupSearchText()
+        getIssueList()
     }
     
     func getIssueList() {

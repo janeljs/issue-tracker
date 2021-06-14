@@ -58,8 +58,6 @@ private extension IssueListViewController {
     }
     
     private func bindIssueList() {
-        viewModel.getIssueList()
-        
         viewModel.issuList()
             .drive(issueCollectionView.rx.items(cellIdentifier: IssueCell.identifier, cellType: IssueCell.self)) { _, issue, cell in
                 cell.configure(issue.title, issue.comment, milestone: issue.milestone, labels: issue.labels)
