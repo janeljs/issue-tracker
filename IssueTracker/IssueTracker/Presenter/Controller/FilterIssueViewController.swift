@@ -11,7 +11,7 @@ class FilterIssueViewController: UIViewController {
     @IBOutlet weak var filterTableView: UITableView!
 
     private let dataSource = RxTableViewSectionedReloadDataSource<SectionOfFilterList>(configureCell: { dataSource, tableView, indexPath, item in
-        let cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.identifier, for: indexPath) as! FilterCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.identifier, for: indexPath) as? FilterCell else { return UITableViewCell() }
         cell.configure(item.mainInfo)
         return cell
     })
@@ -73,14 +73,12 @@ private extension FilterIssueViewController {
         
         filterTableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                let cell = self?.filterTableView.cellForRow(at: indexPath) as! FilterCell
-                cell.isSelected(true)
+                self?.filterTableView.cellForRow(at: indexPath)?.isSelected = true
             }).disposed(by: rx.disposeBag)
         
         filterTableView.rx.itemDeselected
             .subscribe(onNext: { [weak self] indexPath in
-                let cell = self?.filterTableView.cellForRow(at: indexPath) as! FilterCell
-                cell.isSelected(false)
+                self?.filterTableView.cellForRow(at: indexPath)?.isSelected = false
             }).disposed(by: rx.disposeBag)
     }
 }

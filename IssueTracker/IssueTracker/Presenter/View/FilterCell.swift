@@ -30,14 +30,15 @@ class FilterCell: UITableViewCell {
         contentLabel.text = text
     }
     
-    func isSelected(_ status:Bool) {
-        switch status {
-        case true:
-            contentLabel.font = UIFont.boldSystemFont(ofSize: contentLabel.font.pointSize)
-            selectedCheck.isHidden = false
-        case false:
-            contentLabel.font = .none
-            selectedCheck.isHidden = true
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                contentLabel.font = UIFont.boldSystemFont(ofSize: contentLabel.font.pointSize)
+                selectedCheck.isHidden = false
+            } else {
+                contentLabel.font = .none
+                selectedCheck.isHidden = true
+            }
         }
     }
 }
