@@ -4,6 +4,7 @@ import RxCocoa
 
 class IssueDetailViewController: UIViewController {
 
+    @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -18,11 +19,17 @@ private extension IssueDetailViewController {
     
     private func setupMainView() {
         setupButtonAction()
+        setupMarkDownSegmentControl()
     }
     
     private func setupButtonAction() {
         setupCancelButton()
         setupSaveButton()
+    }
+    
+    private func setupMarkDownSegmentControl() {
+        let font = UIFont.boldSystemFont(ofSize: 15)
+        markDownSegmentControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
     }
     
     private func setupCancelButton() {

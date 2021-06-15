@@ -398,6 +398,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xhn-j1-X7w">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="flB-cr-EgL">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="174-n5-biU">
                                 <rect key="frame" x="16" y="11" width="47" height="22"/>
@@ -410,6 +411,14 @@
                                 </state>
                             </button>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="aGr-6C-HxG">
+                            <rect key="frame" x="131.66666666666666" y="6" width="126.99999999999997" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="마크다운"/>
+                                <segment title="미리보기"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5tr-7x-VzL">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0YC-H0-J3h">
                                 <rect key="frame" x="320.33333333333331" y="11" width="53.666666666666686" height="22"/>
@@ -424,6 +433,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="174-n5-biU" id="eYg-kf-DVU"/>
+                        <outlet property="markDownSegmentControl" destination="aGr-6C-HxG" id="5fT-uU-mlw"/>
                         <outlet property="saveButton" destination="0YC-H0-J3h" id="QyQ-21-KQX"/>
                     </connections>
                 </viewController>
