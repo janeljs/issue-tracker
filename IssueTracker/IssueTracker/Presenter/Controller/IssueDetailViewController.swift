@@ -84,7 +84,7 @@ private extension IssueDetailViewController {
     
     private func setupCommentTextViewPlaceHolder() {
         viewModel.previousCheck.accept(false)
-        commentTextView.text = "코멘트를 입력해주세요"
+        commentTextView.text = TextView.placeHolder
         commentTextView.textColor = .lightGray
     }
     

@@ -31,3 +31,7 @@ enum SectionContent {
     static let closed = "닫힌 이슈"
     static let noLabel = "레이블 없음"
 }
+
+enum TextView {
+    static let placeHolder = "코멘트를 입력해주세요"
+}
