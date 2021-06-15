@@ -4,6 +4,7 @@ import RxCocoa
 
 class IssueDetailViewController: UIViewController {
 
+    @IBOutlet var optionalInfoButton: [UIButton]!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
     @IBOutlet weak var cancelButton: UIButton!
