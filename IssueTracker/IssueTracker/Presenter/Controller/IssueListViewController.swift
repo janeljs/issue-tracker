@@ -54,7 +54,7 @@ private extension IssueListViewController {
     private func setupNewIssueButton() {
         newIssueButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.moveToDetailVC()
+                self?.moveToDetailVC(nil)
             }).disposed(by: rx.disposeBag)
     }
 
@@ -71,8 +71,8 @@ private extension IssueListViewController {
     
     private func setupCellTouched() {
         issueCollectionView.rx.modelSelected(IssueInfo.self)
-            .subscribe(onNext: { [weak self] _ in
-                self?.moveToDetailVC()
+            .subscribe(onNext: { [weak self] data in
+                self?.moveToDetailVC(data)
             }).disposed(by: rx.disposeBag)
     }
 
@@ -112,8 +112,9 @@ private extension IssueListViewController {
         present(filterVC, animated: true, completion: nil)
     }
     
-    private func moveToDetailVC() {
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) else { return }
+    private func moveToDetailVC(_ issue:IssueInfo?) {
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) as? IssueDetailViewController else { return }
+        detailVC.configure(issue)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

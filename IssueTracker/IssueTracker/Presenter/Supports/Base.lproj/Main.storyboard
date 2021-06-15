@@ -641,9 +641,7 @@
                         <outlet property="commentTextView" destination="rZi-OI-LVh" id="ZVx-gk-Epo"/>
                         <outlet property="markDownSegmentControl" destination="aGr-6C-HxG" id="5fT-uU-mlw"/>
                         <outlet property="saveButton" destination="0YC-H0-J3h" id="QyQ-21-KQX"/>
-                        <outletCollection property="optionalInfoButton" destination="e8d-HR-P0u" collectionClass="NSMutableArray" id="heG-dy-t31"/>
-                        <outletCollection property="optionalInfoButton" destination="Z7A-m8-csK" collectionClass="NSMutableArray" id="yby-nn-t4I"/>
-                        <outletCollection property="optionalInfoButton" destination="Mjm-x0-44s" collectionClass="NSMutableArray" id="yH3-lU-gvY"/>
+                        <outlet property="titleTextField" destination="jYm-8H-n5e" id="umO-Sd-J3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8R-bP-XCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

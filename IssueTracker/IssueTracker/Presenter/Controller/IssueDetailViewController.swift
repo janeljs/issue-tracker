@@ -4,15 +4,23 @@ import RxCocoa
 
 class IssueDetailViewController: UIViewController {
 
-    @IBOutlet var optionalInfoButton: [UIButton]!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    private let viewModel = IssueDetailViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
+        bind()
+    }
+    
+    func configure(_ issue:IssueInfo?) {
+        guard let issue = issue else { return }
+        viewModel.append(issue)
     }
 }
 
@@ -60,8 +68,7 @@ private extension IssueDetailViewController {
         
         commentTextView.rx.didBeginEditing
             .subscribe(onNext: {[weak self] in
-                self?.commentTextView.text = nil
-                self?.commentTextView.textColor = .black
+                self?.setupPreviousInfo()
             }).disposed(by: rx.disposeBag)
         
         commentTextView.rx.didEndEditing
@@ -76,5 +83,25 @@ private extension IssueDetailViewController {
         commentTextView.text = "코멘트를 입력해주세요"
         commentTextView.textColor = .lightGray
     }
+    
+    private func setupPreviousInfo() {
+        if commentTextView.textColor == .black { return }
+        commentTextView.text = nil
+        commentTextView.textColor = .black
+    }
 }
 
+//MARK: - Bind
+private extension IssueDetailViewController {
+    
+    private func bind() {
+        bindPreviousInfo()
+    }
+    
+    private func bindPreviousInfo() {
+        guard let issue = viewModel.issueList.value.first else { return }
+        titleTextField.text = issue.title
+        commentTextView.textColor = .black
+        commentTextView.text = issue.comment
+    }
+}
