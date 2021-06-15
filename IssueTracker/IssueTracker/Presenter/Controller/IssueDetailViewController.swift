@@ -73,19 +73,23 @@ private extension IssueDetailViewController {
         
         commentTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
-                if self?.commentTextView.text.isEmpty != false {
+                switch self?.commentTextView.text.isEmpty {
+                case true:
                     self?.setupCommentTextViewPlaceHolder()
+                default:
+                    break
                 }
             }).disposed(by: rx.disposeBag)
     }
     
     private func setupCommentTextViewPlaceHolder() {
+        viewModel.previousCheck.accept(false)
         commentTextView.text = "코멘트를 입력해주세요"
         commentTextView.textColor = .lightGray
     }
     
     private func setupPreviousInfo() {
-        if commentTextView.textColor == .black { return }
+        if viewModel.previousCheck.value == true { return }
         commentTextView.text = nil
         commentTextView.textColor = .black
     }
