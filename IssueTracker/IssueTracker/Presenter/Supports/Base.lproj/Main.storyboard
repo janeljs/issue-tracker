@@ -365,11 +365,14 @@
                                 <state key="normal" title="필터" image="line.horizontal.3.decrease" catalog="system"/>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="URk-gV-R97">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rZd-SA-u5X">
-                                <rect key="frame" x="323.66666666666669" y="10.333333333333334" width="50.333333333333314" height="23.666666666666664"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nSj-Ih-e3q">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VRb-yE-ua0">
+                                <rect key="frame" x="172" y="432" width="47" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="선택" image="checkmark.circle" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="선택" image="checkmark.circle" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -377,6 +380,7 @@
                         <outlet property="issueCollectionView" destination="QYS-c3-XvW" id="Onx-Dl-biH"/>
                         <outlet property="issueFilterButton" destination="0wW-Rd-DNB" id="sh0-DW-dqJ"/>
                         <outlet property="newIssueButton" destination="7Sh-Ne-UhV" id="2ui-TW-sOK"/>
+                        <segue destination="JTx-la-K4a" kind="push" id="Fwi-BE-RFW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0r-RA-T9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -393,10 +397,27 @@
                         <viewLayoutGuide key="safeArea" id="5cY-BI-JcT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xhn-j1-X7w">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="flB-cr-EgL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="174-n5-biU">
+                                <rect key="frame" x="16" y="11" width="47" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="취소" image="chevron.backward" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="174-n5-biU" id="eYg-kf-DVU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8R-bP-XCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3514" y="-419"/>
+            <point key="canvasLocation" x="3513.8461538461538" y="-419.43127962085305"/>
         </scene>
         <!--Filter Issue View Controller-->
         <scene sceneID="gae-50-zfK">
@@ -535,6 +556,7 @@
         <image name="apple" width="14" height="17"/>
         <image name="arrow.backward.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="github" width="25" height="24"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
@@ -544,6 +566,9 @@
         <image name="tag" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

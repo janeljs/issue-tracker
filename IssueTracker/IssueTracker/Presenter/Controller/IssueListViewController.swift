@@ -29,14 +29,33 @@ class IssueListViewController: UIViewController {
 private extension IssueListViewController {
     
     private func setMainView() {
-        setupIssueFilterButton()
-        setupRefreshControl()
         setupCollectionView()
+        setupButtonAction()
+        setupRefreshControl()
     }
     
     private func setupCollectionView() {
         setupDelegate()
         setupCellTouched()
+    }
+    
+    private func setupButtonAction() {
+        setupIssueFilterButton()
+        setupNewIssueButton()
+    }
+    
+    private func setupIssueFilterButton() {
+        issueFilterButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToFilterVC()
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupNewIssueButton() {
+        newIssueButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToDetailVC()
+            }).disposed(by: rx.disposeBag)
     }
 
     private func setupRefreshControl() {
@@ -87,13 +106,6 @@ private extension IssueListViewController {
 
 //MARK: - Action
 private extension IssueListViewController {
-    
-    private func setupIssueFilterButton() {
-        issueFilterButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.moveToFilterVC()
-            }).disposed(by: rx.disposeBag)
-    }
     
     private func moveToFilterVC() {
         guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) else { return }
