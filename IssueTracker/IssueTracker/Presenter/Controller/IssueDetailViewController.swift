@@ -4,8 +4,8 @@ import RxCocoa
 
 class IssueDetailViewController: UIViewController {
 
-//    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ private extension IssueDetailViewController {
     
     private func setupButtonAction() {
         setupCancelButton()
-        //setupSaveButton()
+        setupSaveButton()
     }
     
     private func setupCancelButton() {
@@ -31,11 +31,11 @@ private extension IssueDetailViewController {
                 self?.navigationController?.popViewController(animated: true)
             }).disposed(by: rx.disposeBag)
     }
-//    
-//    private func setupSaveButton() {
-//        saveButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                self?.dismiss(animated: true, completion: nil)
-//            }).disposed(by: rx.disposeBag)
-//    }
+    
+    private func setupSaveButton() {
+        saveButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }).disposed(by: rx.disposeBag)
+    }
 }
