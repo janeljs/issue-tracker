@@ -429,17 +429,28 @@
                                     <constraint firstAttribute="height" constant="1" id="CnO-mr-1LH"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZi-OI-LVh">
+                                <rect key="frame" x="16" y="137" width="358" height="357"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5cY-BI-JcT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lbd-9d-xeK" firstAttribute="trailing" secondItem="5cY-BI-JcT" secondAttribute="trailing" id="8xS-qB-XMC"/>
                             <constraint firstItem="lbd-9d-xeK" firstAttribute="top" secondItem="5cY-BI-JcT" secondAttribute="top" id="Bfh-i2-aoI"/>
+                            <constraint firstItem="rZi-OI-LVh" firstAttribute="height" secondItem="vme-3h-csL" secondAttribute="height" multiplier="0.422986" id="D6K-uc-Qwy"/>
                             <constraint firstItem="Eqn-ce-2kU" firstAttribute="leading" secondItem="vme-3h-csL" secondAttribute="leadingMargin" id="HdZ-m7-eop"/>
                             <constraint firstItem="lbd-9d-xeK" firstAttribute="height" secondItem="vme-3h-csL" secondAttribute="height" multiplier="0.0580569" id="Meb-zT-eft"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eqn-ce-2kU" secondAttribute="trailing" id="SSv-xW-7GR"/>
+                            <constraint firstItem="rZi-OI-LVh" firstAttribute="top" secondItem="Eqn-ce-2kU" secondAttribute="top" id="Syr-Ns-hy0"/>
                             <constraint firstItem="Eqn-ce-2kU" firstAttribute="top" secondItem="lbd-9d-xeK" secondAttribute="bottom" id="fTv-dp-7Zc"/>
                             <constraint firstItem="lbd-9d-xeK" firstAttribute="leading" secondItem="5cY-BI-JcT" secondAttribute="leading" id="hXG-6q-gPv"/>
+                            <constraint firstItem="rZi-OI-LVh" firstAttribute="trailing" secondItem="Eqn-ce-2kU" secondAttribute="trailing" id="nuL-32-us2"/>
+                            <constraint firstItem="rZi-OI-LVh" firstAttribute="leading" secondItem="Eqn-ce-2kU" secondAttribute="leading" id="tZh-G6-qxY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Xhn-j1-X7w">
@@ -477,6 +488,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="174-n5-biU" id="eYg-kf-DVU"/>
+                        <outlet property="commentTextView" destination="rZi-OI-LVh" id="ZVx-gk-Epo"/>
                         <outlet property="markDownSegmentControl" destination="aGr-6C-HxG" id="5fT-uU-mlw"/>
                         <outlet property="saveButton" destination="0YC-H0-J3h" id="QyQ-21-KQX"/>
                     </connections>

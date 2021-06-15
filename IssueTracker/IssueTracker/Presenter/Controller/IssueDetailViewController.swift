@@ -4,6 +4,7 @@ import RxCocoa
 
 class IssueDetailViewController: UIViewController {
 
+    @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
@@ -21,6 +22,7 @@ private extension IssueDetailViewController {
         setupButtonAction()
         setupMarkDownSegmentControl()
         setupNavigationBar()
+        setupCommentTextView()
     }
     
     private func setupButtonAction() {
@@ -51,4 +53,27 @@ private extension IssueDetailViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    private func setupCommentTextView() {
+        setupCommentTextViewPlaceHolder()
+        
+        commentTextView.rx.didBeginEditing
+            .subscribe(onNext: {[weak self] in
+                self?.commentTextView.text = nil
+                self?.commentTextView.textColor = .black
+            }).disposed(by: rx.disposeBag)
+        
+        commentTextView.rx.didEndEditing
+            .subscribe(onNext: { [weak self] in
+                if self?.commentTextView.text.isEmpty != false {
+                    self?.setupCommentTextViewPlaceHolder()
+                }
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupCommentTextViewPlaceHolder() {
+        commentTextView.text = "코멘트를 입력해주세요"
+        commentTextView.textColor = .lightGray
+    }
 }
+
