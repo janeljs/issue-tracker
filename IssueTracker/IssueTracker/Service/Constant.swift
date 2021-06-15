@@ -4,6 +4,7 @@ enum ViewControllerID {
     static let issueFilter = "FilterVC"
     static let tabBar = "TabBarVC"
     static let redirection = "RedirectionVC"
+    static let issueDetail = "IssueDetailVC"
 }
 
 enum CellID {

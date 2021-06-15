@@ -328,12 +328,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sh-Ne-UhV">
+                                <rect key="frame" x="330.33333333333331" y="701" width="51" height="44"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e0z-SA-kYV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HjD-6e-ROj" firstAttribute="top" secondItem="e0z-SA-kYV" secondAttribute="top" multiplier="1.05" constant="1" id="0uS-5U-588"/>
+                            <constraint firstItem="e0z-SA-kYV" firstAttribute="bottom" secondItem="7Sh-Ne-UhV" secondAttribute="bottom" multiplier="1.02" constant="1" id="23Y-E7-e3i"/>
+                            <constraint firstItem="e0z-SA-kYV" firstAttribute="trailing" secondItem="7Sh-Ne-UhV" secondAttribute="trailing" multiplier="1.02" constant="1" id="Kow-jb-ao1"/>
                             <constraint firstItem="e0z-SA-kYV" firstAttribute="trailing" secondItem="DK3-aF-yEx" secondAttribute="trailing" constant="15" id="OAO-TQ-CjM"/>
+                            <constraint firstItem="7Sh-Ne-UhV" firstAttribute="height" secondItem="QYS-c3-XvW" secondAttribute="height" multiplier="0.0725275" id="P9E-zD-Nf7"/>
                             <constraint firstItem="QYS-c3-XvW" firstAttribute="bottom" secondItem="e0z-SA-kYV" secondAttribute="bottom" id="PHT-1D-clT"/>
                             <constraint firstItem="HjD-6e-ROj" firstAttribute="leading" secondItem="e0z-SA-kYV" secondAttribute="leading" id="QjY-CZ-vmW"/>
                             <constraint firstItem="QYS-c3-XvW" firstAttribute="trailing" secondItem="e0z-SA-kYV" secondAttribute="trailing" id="YNZ-ub-8gk"/>
@@ -342,6 +353,7 @@
                             <constraint firstItem="QYS-c3-XvW" firstAttribute="top" secondItem="HjD-6e-ROj" secondAttribute="bottom" multiplier="1.03" constant="1" id="nvb-ys-W0F"/>
                             <constraint firstItem="e0z-SA-kYV" firstAttribute="bottom" secondItem="DK3-aF-yEx" secondAttribute="bottom" constant="15" id="obq-CA-gxB"/>
                             <constraint firstItem="e0z-SA-kYV" firstAttribute="trailing" secondItem="HjD-6e-ROj" secondAttribute="trailing" id="qWT-gy-xDr"/>
+                            <constraint firstItem="7Sh-Ne-UhV" firstAttribute="width" secondItem="QYS-c3-XvW" secondAttribute="width" multiplier="0.130769" id="vIq-NA-Vpx"/>
                             <constraint firstItem="DK3-aF-yEx" firstAttribute="width" secondItem="y7b-4X-MXd" secondAttribute="width" multiplier="0.0923077" id="wd1-39-DRt"/>
                         </constraints>
                     </view>
@@ -364,11 +376,27 @@
                     <connections>
                         <outlet property="issueCollectionView" destination="QYS-c3-XvW" id="Onx-Dl-biH"/>
                         <outlet property="issueFilterButton" destination="0wW-Rd-DNB" id="sh0-DW-dqJ"/>
+                        <outlet property="newIssueButton" destination="7Sh-Ne-UhV" id="2ui-TW-sOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0r-RA-T9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2756.9230769230767" y="-419.43127962085305"/>
+        </scene>
+        <!--Issue Detail View Controller-->
+        <scene sceneID="cq3-pL-Vos">
+            <objects>
+                <viewController restorationIdentifier="IssueDetailVC" storyboardIdentifier="IssueDetailVC" id="JTx-la-K4a" customClass="IssueDetailViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vme-3h-csL">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5cY-BI-JcT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8R-bP-XCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3514" y="-419"/>
         </scene>
         <!--Filter Issue View Controller-->
         <scene sceneID="gae-50-zfK">
@@ -428,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRx-qs-5kC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458.4615384615386" y="-419.43127962085305"/>
+            <point key="canvasLocation" x="3514" y="-1074"/>
         </scene>
         <!--내계정-->
         <scene sceneID="O9w-qS-exz">
