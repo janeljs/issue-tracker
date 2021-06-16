@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MarkdownView
 
 class IssueDetailViewController: UIViewController {
 
@@ -11,6 +12,13 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     private let viewModel = IssueDetailViewModel()
+    
+    private lazy var mdView: MarkdownView = {
+        let md = MarkdownView()
+        md.frame = CGRect(x: commentTextView.frame.minX, y: commentTextView.frame.minY, width: commentTextView.frame.width, height: commentTextView.frame.height)
+        md.backgroundColor = .white
+        return md
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +40,7 @@ private extension IssueDetailViewController {
         setupMarkDownSegmentControl()
         setupNavigationBar()
         setupCommentTextView()
+        setupMarkDownView()
     }
     
     private func setupButtonAction() {
@@ -42,6 +51,16 @@ private extension IssueDetailViewController {
     private func setupMarkDownSegmentControl() {
         let font = UIFont.boldSystemFont(ofSize: 12)
         markDownSegmentControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
+        markDownSegmentControl.rx.selectedSegmentIndex
+            .subscribe(onNext: { [weak self] index in
+                switch index {
+                case 1:
+                    self?.moveMarkDownViewFront()
+                default:
+                    self?.moveMarkDownViewBack()
+                }
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupCancelButton() {
@@ -92,6 +111,22 @@ private extension IssueDetailViewController {
         if viewModel.previousCheck.value == true { return }
         commentTextView.text = nil
         commentTextView.textColor = .black
+    }
+    
+    private func setupMarkDownView() {
+        view.addSubview(mdView)
+        view.insertSubview(mdView, belowSubview: commentTextView)
+    }
+    
+    private func moveMarkDownViewFront() {
+        DispatchQueue.main.async {
+            self.mdView.load(markdown: self.commentTextView.text)
+        }
+        view.bringSubviewToFront(self.mdView)
+    }
+    
+    private func moveMarkDownViewBack() {
+        view.insertSubview(mdView, belowSubview: commentTextView)
     }
 }
 
