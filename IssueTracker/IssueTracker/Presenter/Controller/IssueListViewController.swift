@@ -11,7 +11,7 @@ class IssueListViewController: UIViewController {
     
     private let viewModel = IssueListViewModel()
     private var labels:[Label]?
-    private var mileStone:String?
+    private var mileStone:Set<String> = []
     private var assignee:[Assignee]?
     
     private lazy var searchController: UISearchController = {
@@ -85,7 +85,7 @@ private extension IssueListViewController {
     
     private func setupFilterInfo(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
         self.labels = labels
-        self.mileStone = milestone
+        self.mileStone.insert(milestone)
         self.assignee = assignee
     }
 }
@@ -119,7 +119,8 @@ private extension IssueListViewController {
     
     private func moveToFilterVC() {
         guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) as? FilterIssueViewController else { return }
-        if let labels = labels, let mileStone = mileStone, let assignee = assignee  {
+        if let labels = labels, let assignee = assignee  {
+            print(labels, mileStone, assignee)
             filterVC.configure(labels, mileStone, assignee)
         }
         present(filterVC, animated: true, completion: nil)

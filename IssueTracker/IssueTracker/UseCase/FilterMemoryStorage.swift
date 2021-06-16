@@ -27,9 +27,11 @@ class FilterMemoryStorage {
         store.accept(list)
     }
     
-    func append(_ milestone:String) {
-        let item = FilterList(mainInfo: milestone)
-        list[3].items.append(item)
+    func append(_ milestone:Set<String>) {
+        milestone.forEach {
+            let item = FilterList(mainInfo: $0)
+            list[3].items.append(item)
+        }
         store.accept(list)
     }
     

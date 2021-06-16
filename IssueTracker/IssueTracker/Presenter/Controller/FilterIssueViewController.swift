@@ -25,7 +25,7 @@ class FilterIssueViewController: UIViewController {
         bind()
     }
     
-    func configure(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
+    func configure(_ labels:[Label], _ milestone:Set<String>, _ assignee:[Assignee]) {
         viewModel.updateInfo(labels, milestone, assignee)
     }
 }

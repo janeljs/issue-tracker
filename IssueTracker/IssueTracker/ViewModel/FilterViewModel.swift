@@ -11,7 +11,7 @@ class FilterViewModel: NSObject {
         return storage.filterList()
     }()
     
-    func updateInfo(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
+    func updateInfo(_ labels:[Label], _ milestone:Set<String>, _ assignee:[Assignee]) {
         storage.append(labels)
         storage.append(milestone)
         storage.append(assignee)
