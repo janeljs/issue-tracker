@@ -19,7 +19,8 @@ class IssueListViewModel: NSObject {
     }
     
     func getIssueList() {
-        APIService.get(API.getOpenIssue)
+        guard let url = URL(string: API.getOpenIssue+"?status=open") else { return }
+        APIService.get(url)
             .subscribe(onNext: { [weak self] issue in
                 self?.storage.append(issue.issues)
             }, onError: { error in
