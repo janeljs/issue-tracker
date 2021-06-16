@@ -119,8 +119,8 @@ private extension IssueListViewController {
     
     private func moveToFilterVC() {
         guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) as? FilterIssueViewController else { return }
+        filterVC.delegate = self
         if let labels = labels, let assignee = assignee  {
-            print(labels, mileStone, assignee)
             filterVC.configure(labels, mileStone, assignee)
         }
         present(filterVC, animated: true, completion: nil)
@@ -151,3 +151,8 @@ extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension IssueListViewController: DeliveryFilteredInfo {
+    func deliveryData(of issueInfo: [IssueInfo]) {
+        viewModel.bindFilteredInfo(issueInfo)
+    }
+}

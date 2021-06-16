@@ -19,7 +19,7 @@ class IssueListViewModel: NSObject {
     }
     
     func getIssueList() {
-        guard let url = URL(string: API.getOpenIssue+"?status=open") else { return }
+        guard let url = URL(string: API.getIssueInfo) else { return }
         APIService.get(url)
             .subscribe(onNext: { [weak self] issue in
                 self?.storage.append(issue.issues)
@@ -38,6 +38,10 @@ class IssueListViewModel: NSObject {
         } else {
             storage.append([issue])
         }
+    }
+    
+    func bindFilteredInfo(_ issue:[IssueInfo]) {
+        filteredIssues.accept(issue)
     }
 }
 

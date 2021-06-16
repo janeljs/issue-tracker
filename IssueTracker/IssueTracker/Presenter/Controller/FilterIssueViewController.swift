@@ -4,6 +4,10 @@ import RxCocoa
 import NSObject_Rx
 import RxDataSources
 
+protocol DeliveryFilteredInfo: AnyObject {
+    func deliveryData(of issueInfo:[IssueInfo])
+}
+
 class FilterIssueViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -18,7 +22,8 @@ class FilterIssueViewController: UIViewController {
     
     private let viewModel = FilterViewModel()
     private var selectedInfo:(Int,String)?
-    
+    weak var delegate: DeliveryFilteredInfo?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFilterTableView()
@@ -49,8 +54,16 @@ private extension FilterIssueViewController {
     private func setupIssueSaveButton() {
         saveButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.getFilterData(self?.selectedInfo ?? (0, ""))
+                self?.saveButtonAction()
                 self?.dismiss(animated: true, completion: nil)
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func saveButtonAction() {
+        viewModel.getFilterData(selectedInfo ?? (0, ""))
+        viewModel.selectedFilter
+            .subscribe(onNext: { [weak self] data in
+                self?.delegate?.deliveryData(of: data)
             }).disposed(by: rx.disposeBag)
     }
 }
