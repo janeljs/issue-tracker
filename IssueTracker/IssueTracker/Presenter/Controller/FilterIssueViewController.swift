@@ -17,6 +17,7 @@ class FilterIssueViewController: UIViewController {
     })
     
     private let viewModel = FilterViewModel()
+    private var selectedInfo:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ private extension FilterIssueViewController {
     private func setupIssueSaveButton() {
         saveButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                print(self?.selectedInfo)
                 self?.dismiss(animated: true, completion: nil)
             }).disposed(by: rx.disposeBag)
     }
@@ -85,10 +87,12 @@ private extension FilterIssueViewController {
             .drive(filterTableView.rx.items(dataSource: dataSource))
             .disposed(by: rx.disposeBag)
         
-        filterTableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
+        Observable
+            .zip(filterTableView.rx.itemSelected, filterTableView.rx.modelSelected(FilterList.self))
+            .bind { [weak self] indexPath, model in
                 self?.filterTableView.cellForRow(at: indexPath)?.isSelected = true
-            }).disposed(by: rx.disposeBag)
+                self?.selectedInfo = model.mainInfo
+            }.disposed(by: rx.disposeBag)
         
         filterTableView.rx.itemDeselected
             .subscribe(onNext: { [weak self] indexPath in
