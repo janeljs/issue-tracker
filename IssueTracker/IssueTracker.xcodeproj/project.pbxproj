@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7105555D266F36650072065E /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7105555C266F36650072065E /* FilterIssueViewController.swift */; };
 		71055560266F36FD0072065E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7105555F266F36FD0072065E /* Constant.swift */; };
-		711CCE0B267842E700658550 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711CCE0A267842E700658550 /* IssueDetailViewController.swift */; };
+		711CCE0B267842E700658550 /* CreateIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711CCE0A267842E700658550 /* CreateIssueViewController.swift */; };
 		7123D3FF266F2431009C959B /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123D3FE266F2431009C959B /* IssueListViewController.swift */; };
 		71377D1E266E458000DB1C4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71377D1D266E458000DB1C4D /* AppDelegate.swift */; };
 		71377D20266E458000DB1C4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71377D1F266E458000DB1C4D /* SceneDelegate.swift */; };
@@ -18,7 +18,6 @@
 		71377D27266E458100DB1C4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71377D26266E458100DB1C4D /* Assets.xcassets */; };
 		71377D2A266E458100DB1C4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71377D28266E458100DB1C4D /* LaunchScreen.storyboard */; };
 		71377D33266E47AC00DB1C4D /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71377D32266E47AC00DB1C4D /* OctoKit */; };
-		717A12FB2678C38800422551 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A12FA2678C38800422551 /* IssueDetailViewModel.swift */; };
 		71928E7F2671C06200847111 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E7E2671C06200847111 /* LoginManager.swift */; };
 		71928E852671C4D300847111 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E842671C4D300847111 /* LoginDTO.swift */; };
 		71928E872671CA6E00847111 /* LoginObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E862671CA6E00847111 /* LoginObserver.swift */; };
@@ -65,7 +64,7 @@
 		128E23D2A9D361739F10C510 /* Pods-IssueTracker-IssueTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker-IssueTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker-IssueTrackerTests/Pods-IssueTracker-IssueTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		7105555C266F36650072065E /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		7105555F266F36FD0072065E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		711CCE0A267842E700658550 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		711CCE0A267842E700658550 /* CreateIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIssueViewController.swift; sourceTree = "<group>"; };
 		7123D3FE266F2431009C959B /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		71377D1A266E458000DB1C4D /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71377D1D266E458000DB1C4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +74,6 @@
 		71377D26266E458100DB1C4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71377D29266E458100DB1C4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71377D2B266E458100DB1C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		717A12FA2678C38800422551 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
 		71928E7E2671C06200847111 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		71928E842671C4D300847111 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		71928E862671CA6E00847111 /* LoginObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObserver.swift; sourceTree = "<group>"; };
@@ -156,7 +154,7 @@
 				7123D3FE266F2431009C959B /* IssueListViewController.swift */,
 				7105555C266F36650072065E /* FilterIssueViewController.swift */,
 				71928E8A2671CFD900847111 /* RedirectionViewController.swift */,
-				711CCE0A267842E700658550 /* IssueDetailViewController.swift */,
+				711CCE0A267842E700658550 /* CreateIssueViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,7 +255,6 @@
 			children = (
 				71FCE1A82670B2A30044038E /* IssueListViewModel.swift */,
 				71B040F626732DEA008819E8 /* FilterViewModel.swift */,
-				717A12FA2678C38800422551 /* IssueDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -490,7 +487,7 @@
 				71928E872671CA6E00847111 /* LoginObserver.swift in Sources */,
 				71928E8B2671CFD900847111 /* RedirectionViewController.swift in Sources */,
 				71FCE19C2670ABD60044038E /* APIService.swift in Sources */,
-				711CCE0B267842E700658550 /* IssueDetailViewController.swift in Sources */,
+				711CCE0B267842E700658550 /* CreateIssueViewController.swift in Sources */,
 				71377D22266E458000DB1C4D /* LoginViewController.swift in Sources */,
 				71377D1E266E458000DB1C4D /* AppDelegate.swift in Sources */,
 				71377D20266E458000DB1C4D /* SceneDelegate.swift in Sources */,
@@ -504,7 +501,6 @@
 				71B040FB26733BF8008819E8 /* FilterCell.swift in Sources */,
 				71928E8F2671DF2800847111 /* Label.swift in Sources */,
 				71055560266F36FD0072065E /* Constant.swift in Sources */,
-				717A12FB2678C38800422551 /* IssueDetailViewModel.swift in Sources */,
 				71B040F526732B82008819E8 /* FilterList.swift in Sources */,
 				71928E852671C4D300847111 /* LoginDTO.swift in Sources */,
 				71928E8D2671DEDA00847111 /* Assignee.swift in Sources */,

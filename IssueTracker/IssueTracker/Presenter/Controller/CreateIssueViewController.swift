@@ -4,14 +4,12 @@ import RxCocoa
 import MarkdownView
 
 class CreateIssueViewController: UIViewController {
-
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    
-    private let viewModel = IssueDetailViewModel()
     
     private lazy var mdView: MarkdownView = {
         let md = MarkdownView()
@@ -23,12 +21,6 @@ class CreateIssueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
-        bind()
-    }
-    
-    func configure(_ issue:IssueInfo?) {
-        guard let issue = issue else { return }
-        viewModel.append(issue)
     }
 }
 
@@ -87,14 +79,13 @@ private extension CreateIssueViewController {
         
         commentTextView.rx.didBeginEditing
             .subscribe(onNext: {[weak self] in
-                self?.setupPreviousInfo()
+                self?.setupInitiateTypeText()
             }).disposed(by: rx.disposeBag)
         
         commentTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
                 switch self?.commentTextView.text.isEmpty {
                 case true:
-                    self?.viewModel.previousCheck.accept(false)
                     self?.setupCommentTextViewPlaceHolder()
                 default:
                     break
@@ -107,16 +98,9 @@ private extension CreateIssueViewController {
         commentTextView.textColor = .lightGray
     }
     
-    private func setupPreviousInfo() {
-        viewModel.previousCheck
-            .subscribe(onNext: { [weak self] check in
-                switch check {
-                case true: break
-                default:
-                    self?.commentTextView.text = nil
-                    self?.commentTextView.textColor = .black
-                }
-            }).disposed(by: rx.disposeBag)
+    private func setupInitiateTypeText() {
+        commentTextView.text = nil
+        commentTextView.textColor = .black
     }
     
     private func setupMarkDownView() {
@@ -133,21 +117,6 @@ private extension CreateIssueViewController {
     
     private func moveMarkDownViewBack() {
         view.insertSubview(mdView, belowSubview: commentTextView)
-    }
-}
-
-//MARK: - Bind
-private extension CreateIssueViewController {
-    
-    private func bind() {
-        bindPreviousInfo()
-    }
-    
-    private func bindPreviousInfo() {
-        guard let issue = viewModel.issueList.value.first else { return }
-        titleTextField.text = issue.title
-        commentTextView.textColor = .black
-        commentTextView.text = issue.comment
     }
 }
 

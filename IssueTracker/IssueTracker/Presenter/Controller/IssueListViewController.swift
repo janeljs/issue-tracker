@@ -54,7 +54,7 @@ private extension IssueListViewController {
     private func setupNewIssueButton() {
         newIssueButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.moveToDetailVC(nil)
+                self?.moveToCreateIssueVC(nil)
             }).disposed(by: rx.disposeBag)
     }
 
@@ -72,7 +72,7 @@ private extension IssueListViewController {
     private func setupCellTouched() {
         issueCollectionView.rx.modelSelected(IssueInfo.self)
             .subscribe(onNext: { [weak self] data in
-                self?.moveToDetailVC(data)
+                //DetailVC이동 구현
             }).disposed(by: rx.disposeBag)
     }
 
@@ -112,11 +112,9 @@ private extension IssueListViewController {
         present(filterVC, animated: true, completion: nil)
     }
     
-    private func moveToDetailVC(_ issue:IssueInfo?) {
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) as? IssueDetailViewController else { return }
-        detailVC.delegate = self
-        detailVC.configure(issue)
-        navigationController?.pushViewController(detailVC, animated: true)
+    private func moveToCreateIssueVC(_ issue:IssueInfo?) {
+        guard let moveToCreateIssueVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) as? CreateIssueViewController else { return }
+        navigationController?.pushViewController(moveToCreateIssueVC, animated: true)
     }
     
     @objc private func refresh() {
@@ -139,8 +137,3 @@ extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension IssueListViewController: DeliveryDataProtocol {
-    func deliveryData(of issue: IssueInfo) {
-        viewModel.save(issue)
-    }
-}
