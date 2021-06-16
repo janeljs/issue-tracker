@@ -113,7 +113,7 @@ private extension IssueListViewController {
     }
     
     private func moveToCreateIssueVC(_ issue:IssueInfo?) {
-        guard let moveToCreateIssueVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) as? CreateIssueViewController else { return }
+        guard let moveToCreateIssueVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.createIssue) as? CreateIssueViewController else { return }
         navigationController?.pushViewController(moveToCreateIssueVC, animated: true)
     }
     

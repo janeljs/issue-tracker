@@ -390,7 +390,7 @@
         <!--Create Issue View Controller-->
         <scene sceneID="cq3-pL-Vos">
             <objects>
-                <viewController restorationIdentifier="IssueDetailVC" storyboardIdentifier="IssueDetailVC" id="JTx-la-K4a" customClass="CreateIssueViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CreateIssueVC" storyboardIdentifier="CreateIssueVC" id="JTx-la-K4a" customClass="CreateIssueViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vme-3h-csL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
