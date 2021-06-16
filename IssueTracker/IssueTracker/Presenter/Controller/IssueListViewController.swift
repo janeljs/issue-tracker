@@ -114,6 +114,7 @@ private extension IssueListViewController {
     
     private func moveToDetailVC(_ issue:IssueInfo?) {
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueDetail) as? IssueDetailViewController else { return }
+        detailVC.delegate = self
         detailVC.configure(issue)
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -135,5 +136,11 @@ extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
+extension IssueListViewController: DeliveryDataProtocol {
+    func deliveryData(of issue: IssueInfo) {
+        viewModel.update(issue)
     }
 }

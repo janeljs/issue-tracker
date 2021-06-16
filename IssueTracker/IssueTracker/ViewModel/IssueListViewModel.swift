@@ -30,6 +30,10 @@ class IssueListViewModel: NSObject {
     func issuList() -> Driver<[IssueInfo]> {
         return filteredIssues.asDriver(onErrorJustReturn: [])
     }
+    
+    func update(_ issue:IssueInfo) {
+        storage.update(issue)
+    }
 }
 
 private extension IssueListViewModel {

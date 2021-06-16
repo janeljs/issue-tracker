@@ -3,6 +3,11 @@ import RxSwift
 import RxCocoa
 import MarkdownView
 
+protocol DeliveryDataProtocol: AnyObject {
+    
+    func deliveryData(of issue: IssueInfo)
+}
+
 class IssueDetailViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -11,7 +16,9 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
-    private let viewModel = IssueDetailViewModel()
+    private let detailViewModel = IssueDetailViewModel()
+    private var selectedData: IssueInfo?
+    weak var delegate: DeliveryDataProtocol?
     
     private lazy var mdView: MarkdownView = {
         let md = MarkdownView()
@@ -28,7 +35,7 @@ class IssueDetailViewController: UIViewController {
     
     func configure(_ issue:IssueInfo?) {
         guard let issue = issue else { return }
-        viewModel.append(issue)
+        detailViewModel.append(issue)
     }
 }
 
@@ -73,7 +80,7 @@ private extension IssueDetailViewController {
     private func setupSaveButton() {
         saveButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
+                self?.saveButtonAction()
             }).disposed(by: rx.disposeBag)
     }
     
@@ -102,13 +109,13 @@ private extension IssueDetailViewController {
     }
     
     private func setupCommentTextViewPlaceHolder() {
-        viewModel.previousCheck.accept(false)
+        detailViewModel.previousCheck.accept(false)
         commentTextView.text = TextView.placeHolder
         commentTextView.textColor = .lightGray
     }
     
     private func setupPreviousInfo() {
-        if viewModel.previousCheck.value == true { return }
+        if detailViewModel.previousCheck.value == true { return }
         commentTextView.text = nil
         commentTextView.textColor = .black
     }
@@ -138,9 +145,21 @@ private extension IssueDetailViewController {
     }
     
     private func bindPreviousInfo() {
-        guard let issue = viewModel.issueList.value.first else { return }
+        guard let issue = detailViewModel.issueList.value.first else { return }
+        selectedData = issue
         titleTextField.text = issue.title
         commentTextView.textColor = .black
         commentTextView.text = issue.comment
+    }
+}
+
+//MARK: - Action
+private extension IssueDetailViewController {
+    
+    private func saveButtonAction() {
+        selectedData?.title = titleTextField.text ?? ""
+        selectedData?.comment = commentTextView.text
+        delegate?.deliveryData(of: selectedData!)
+        navigationController?.popViewController(animated: true)
     }
 }
