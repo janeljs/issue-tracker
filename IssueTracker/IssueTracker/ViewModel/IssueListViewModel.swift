@@ -31,8 +31,12 @@ class IssueListViewModel: NSObject {
         return filteredIssues.asDriver(onErrorJustReturn: [])
     }
     
-    func update(_ issue:IssueInfo) {
-        storage.update(issue)
+    func save(_ issue:IssueInfo) {
+        if let index = storage.checkIndexRedundant(of: issue) {
+            storage.update(issue, index)
+        } else {
+            storage.append([issue])
+        }
     }
 }
 

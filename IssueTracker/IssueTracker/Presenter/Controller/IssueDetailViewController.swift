@@ -16,7 +16,7 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
-    private let detailViewModel = IssueDetailViewModel()
+    private let viewModel = IssueDetailViewModel()
     private var selectedData: IssueInfo?
     weak var delegate: DeliveryDataProtocol?
     
@@ -35,7 +35,7 @@ class IssueDetailViewController: UIViewController {
     
     func configure(_ issue:IssueInfo?) {
         guard let issue = issue else { return }
-        detailViewModel.append(issue)
+        viewModel.append(issue)
     }
 }
 
@@ -101,6 +101,7 @@ private extension IssueDetailViewController {
             .subscribe(onNext: { [weak self] in
                 switch self?.commentTextView.text.isEmpty {
                 case true:
+                    self?.viewModel.previousCheck.accept(false)
                     self?.setupCommentTextViewPlaceHolder()
                 default:
                     break
@@ -109,15 +110,20 @@ private extension IssueDetailViewController {
     }
     
     private func setupCommentTextViewPlaceHolder() {
-        detailViewModel.previousCheck.accept(false)
         commentTextView.text = TextView.placeHolder
         commentTextView.textColor = .lightGray
     }
     
     private func setupPreviousInfo() {
-        if detailViewModel.previousCheck.value == true { return }
-        commentTextView.text = nil
-        commentTextView.textColor = .black
+        viewModel.previousCheck
+            .subscribe(onNext: { [weak self] check in
+                switch check {
+                case true: break
+                default:
+                    self?.commentTextView.text = nil
+                    self?.commentTextView.textColor = .black
+                }
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupMarkDownView() {
@@ -145,7 +151,7 @@ private extension IssueDetailViewController {
     }
     
     private func bindPreviousInfo() {
-        guard let issue = detailViewModel.issueList.value.first else { return }
+        guard let issue = viewModel.issueList.value.first else { return }
         selectedData = issue
         titleTextField.text = issue.title
         commentTextView.textColor = .black

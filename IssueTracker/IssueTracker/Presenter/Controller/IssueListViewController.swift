@@ -141,6 +141,6 @@ extension IssueListViewController: UICollectionViewDelegateFlowLayout {
 
 extension IssueListViewController: DeliveryDataProtocol {
     func deliveryData(of issue: IssueInfo) {
-        viewModel.update(issue)
+        viewModel.save(issue)
     }
 }
