@@ -24,6 +24,10 @@ class FilterIssueViewController: UIViewController {
         setupButtonAction()
         bind()
     }
+    
+    func configure(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
+        viewModel.updateInfo(labels, milestone, assignee)
+    }
 }
 
 //MARK: - Setup Button Action

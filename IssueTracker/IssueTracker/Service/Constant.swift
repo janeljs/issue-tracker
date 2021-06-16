@@ -21,6 +21,7 @@ enum SectionTitle {
     static let status = "상태"
     static let author = "작성자"
     static let label = "레이블"
+    static let milestone = "마일스톤"
 }
 
 enum SectionContent {

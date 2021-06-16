@@ -10,6 +10,9 @@ class IssueListViewController: UIViewController {
     @IBOutlet weak var newIssueButton: UIButton!
     
     private let viewModel = IssueListViewModel()
+    private var labels:[Label]?
+    private var mileStone:String?
+    private var assignee:[Assignee]?
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
@@ -79,6 +82,12 @@ private extension IssueListViewController {
     private func setupDelegate() {
         issueCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
     }
+    
+    private func setupFilterInfo(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
+        self.labels = labels
+        self.mileStone = milestone
+        self.assignee = assignee
+    }
 }
 
 //MARK: - Bind
@@ -91,8 +100,9 @@ private extension IssueListViewController {
     
     private func bindIssueList() {
         viewModel.issuList()
-            .drive(issueCollectionView.rx.items(cellIdentifier: IssueCell.identifier, cellType: IssueCell.self)) { _, issue, cell in
+            .drive(issueCollectionView.rx.items(cellIdentifier: IssueCell.identifier, cellType: IssueCell.self)) { [weak self] _, issue, cell in
                 cell.configure(issue.title, issue.comment, milestone: issue.milestone, labels: issue.labels)
+                self?.setupFilterInfo(issue.labels, issue.milestone, issue.assignees)
             }.disposed(by: rx.disposeBag)
     }
     
@@ -108,7 +118,10 @@ private extension IssueListViewController {
 private extension IssueListViewController {
     
     private func moveToFilterVC() {
-        guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) else { return }
+        guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) as? FilterIssueViewController else { return }
+        if let labels = labels, let mileStone = mileStone, let assignee = assignee  {
+            filterVC.configure(labels, mileStone, assignee)
+        }
         present(filterVC, animated: true, completion: nil)
     }
     
