@@ -19,7 +19,6 @@ class FilterViewModel: NSObject {
     
     func getFilterData(_ info:(Int, String)) {
         guard let url = convertToURL(info.0, info.1) else { return }
-        print(url)
         APIService.get(url)
             .subscribe(onNext: { [weak self] issueDTO in
                 self?.selectedFilter.accept(issueDTO.issues)
