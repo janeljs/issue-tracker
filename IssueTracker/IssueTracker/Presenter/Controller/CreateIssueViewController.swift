@@ -5,6 +5,7 @@ import MarkdownView
 
 class CreateIssueViewController: UIViewController {
     
+    @IBOutlet var additionalInfoButton: [UIButton]!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var markDownSegmentControl: UISegmentedControl!
@@ -38,6 +39,7 @@ private extension CreateIssueViewController {
     private func setupButtonAction() {
         setupCancelButton()
         setupSaveButton()
+        setupAdditionalInfoButton()
     }
     
     private func setupMarkDownSegmentControl() {
@@ -67,6 +69,17 @@ private extension CreateIssueViewController {
             .subscribe(onNext: { [weak self] in
                 //이슈를 만들어서 보내고 뷰컨트롤러 넘길때 정보도 같이 넘김
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupAdditionalInfoButton() {
+        additionalInfoButton
+            .forEach{ button in
+                button.rx.tap
+                    .subscribe(onNext: { [weak self] _ in
+                        self?.moveToAdditionalIssueVC()
+                    }).disposed(by: rx.disposeBag)
+            }
+            
     }
     
     private func setupNavigationBar() {
@@ -129,5 +142,12 @@ private extension CreateIssueViewController {
             return
         }
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    private func moveToAdditionalIssueVC() {
+        guard let additionalVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.additionalInfo) else {
+            return
+        }
+        present(additionalVC, animated: true, completion: nil)
     }
 }
