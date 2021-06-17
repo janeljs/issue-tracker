@@ -5,6 +5,7 @@ enum ViewControllerID {
     static let tabBar = "TabBarVC"
     static let redirection = "RedirectionVC"
     static let createIssue = "CreateIssueVC"
+    static let detailIssue = "DetailIssueVC"
 }
 
 enum CellID {

@@ -74,8 +74,8 @@ private extension IssueListViewController {
     
     private func setupCellTouched() {
         issueCollectionView.rx.modelSelected(IssueInfo.self)
-            .subscribe(onNext: { [weak self] data in
-                //DetailVC이동 구현
+            .subscribe(onNext: { [weak self] issueInfo in
+                self?.moveToDetailIssueVC(issueInfo)
             }).disposed(by: rx.disposeBag)
     }
 
@@ -129,6 +129,14 @@ private extension IssueListViewController {
     private func moveToCreateIssueVC(_ issue:IssueInfo?) {
         guard let moveToCreateIssueVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.createIssue) as? CreateIssueViewController else { return }
         navigationController?.pushViewController(moveToCreateIssueVC, animated: true)
+    }
+    
+    private func moveToDetailIssueVC(_ issue:IssueInfo) {
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.detailIssue) as? DetailIssueViewController else {
+            return
+        }
+        detailVC.configure(issue)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     @objc private func refresh() {

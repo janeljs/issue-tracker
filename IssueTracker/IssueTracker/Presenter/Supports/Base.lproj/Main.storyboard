@@ -365,13 +365,13 @@
                                 <state key="normal" title="필터" image="line.horizontal.3.decrease" catalog="system"/>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="nSj-Ih-e3q">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VRb-yE-ua0">
-                                <rect key="frame" x="323.66666666666669" y="10.333333333333334" width="50.333333333333314" height="23.666666666666664"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="K0A-hl-XoE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XjK-f1-WAI">
+                                <rect key="frame" x="317.66666666666669" y="10.333333333333334" width="56.333333333333314" height="23.666666666666664"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="선택" image="checkmark.circle" catalog="system">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="선택">
+                                    <imageReference key="image" image="checkmark.circle" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
                         </barButtonItem>
@@ -642,11 +642,28 @@
                         <outlet property="markDownSegmentControl" destination="aGr-6C-HxG" id="5fT-uU-mlw"/>
                         <outlet property="saveButton" destination="0YC-H0-J3h" id="QyQ-21-KQX"/>
                         <outlet property="titleTextField" destination="jYm-8H-n5e" id="umO-Sd-J3O"/>
+                        <segue destination="6jh-bK-nfk" kind="push" id="hZg-zA-wgX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8R-bP-XCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3513.8461538461538" y="-419.43127962085305"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HB4-P3-ycP">
+            <objects>
+                <viewController restorationIdentifier="DetailIssueVC" storyboardIdentifier="DetailIssueVC" id="6jh-bK-nfk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="98E-1w-FIo">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EB8-ym-j1r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Rh-sP-dhn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5NJ-tv-8Ig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4255" y="-419"/>
         </scene>
         <!--Filter Issue View Controller-->
         <scene sceneID="gae-50-zfK">
@@ -797,9 +814,6 @@
         <image name="tag" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

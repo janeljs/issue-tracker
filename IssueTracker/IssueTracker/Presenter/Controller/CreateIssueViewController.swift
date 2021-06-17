@@ -65,7 +65,7 @@ private extension CreateIssueViewController {
     private func setupSaveButton() {
         saveButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.saveButtonAction()
+                //이슈를 만들어서 보내고 뷰컨트롤러 넘길때 정보도 같이 넘김
             }).disposed(by: rx.disposeBag)
     }
     
@@ -123,8 +123,11 @@ private extension CreateIssueViewController {
 
 //MARK: - Action
 private extension CreateIssueViewController {
-    
-    private func saveButtonAction() {
-        navigationController?.popViewController(animated: true)
+        
+    private func moveToDetailIssueVC(_ issue:IssueInfo) {
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.detailIssue) else {
+            return
+        }
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
