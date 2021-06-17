@@ -109,14 +109,15 @@ private extension CreateIssueViewController {
     }
     
     private func moveMarkDownViewFront() {
+        view.bringSubviewToFront(self.mdView)
         DispatchQueue.main.async {
             self.mdView.load(markdown: self.commentTextView.text)
         }
-        view.bringSubviewToFront(self.mdView)
     }
     
     private func moveMarkDownViewBack() {
         view.insertSubview(mdView, belowSubview: commentTextView)
+        mdView.subviews.forEach{$0.removeFromSuperview()}
     }
 }
 
