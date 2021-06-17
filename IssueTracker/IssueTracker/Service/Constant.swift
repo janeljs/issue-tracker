@@ -26,6 +26,12 @@ enum FilteredAPI {
     static let milestone = stauts+"&milestone="
 }
 
+enum AdditionalAPI {
+    static let label = "http://3.37.76.224/api/labels"
+    static let milestone = "http://3.37.76.224/api/milestones"
+    static let assignee = "http://3.37.76.224/api/assignees"
+}
+
 enum SectionTitle {
     static let status = "상태"
     static let author = "작성자"

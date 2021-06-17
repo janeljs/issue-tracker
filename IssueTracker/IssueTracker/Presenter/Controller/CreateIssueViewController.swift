@@ -72,14 +72,12 @@ private extension CreateIssueViewController {
     }
     
     private func setupAdditionalInfoButton() {
-        additionalInfoButton
-            .forEach{ button in
-                button.rx.tap
-                    .subscribe(onNext: { [weak self] _ in
-                        self?.moveToAdditionalIssueVC()
-                    }).disposed(by: rx.disposeBag)
-            }
-            
+        additionalInfoButton.enumerated().forEach { index, button in
+            button.rx.tap
+                .subscribe(onNext: { [weak self] _ in
+                    self?.moveToAdditionalIssueVC(index)
+                }).disposed(by: rx.disposeBag)
+        }
     }
     
     private func setupNavigationBar() {
@@ -144,10 +142,11 @@ private extension CreateIssueViewController {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    private func moveToAdditionalIssueVC() {
-        guard let additionalVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.additionalInfo) else {
+    private func moveToAdditionalIssueVC(_ info:Int) {
+        guard let additionalVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.additionalInfo) as? AdditionalViewController else {
             return
         }
+        additionalVC.configure(info)
         present(additionalVC, animated: true, completion: nil)
     }
 }

@@ -19,7 +19,7 @@ class FilterViewModel: NSObject {
     
     func getFilterData(_ info:(Int, String)) {
         guard let url = convertToURL(info.0, info.1) else { return }
-        APIService.get(url)
+        APIService.shared.getIssueInfo(url)
             .subscribe(onNext: { [weak self] issueDTO in
                 self?.selectedFilter.accept(issueDTO.issues)
             }, onError: { error in

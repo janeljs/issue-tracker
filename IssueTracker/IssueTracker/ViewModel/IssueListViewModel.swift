@@ -20,7 +20,7 @@ class IssueListViewModel: NSObject {
     
     func getIssueList() {
         guard let url = URL(string: API.getIssueInfo) else { return }
-        APIService.get(url)
+        APIService.shared.getIssueInfo(url)
             .subscribe(onNext: { [weak self] issue in
                 self?.storage.append(issue.issues)
             }, onError: { error in

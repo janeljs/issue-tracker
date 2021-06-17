@@ -13,6 +13,7 @@
 		7123D3FF266F2431009C959B /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123D3FE266F2431009C959B /* IssueListViewController.swift */; };
 		7128DF83267AEB4D0019FC09 /* DetailIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128DF82267AEB4D0019FC09 /* DetailIssueViewController.swift */; };
 		7128DF85267AED3B0019FC09 /* AdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128DF84267AED3B0019FC09 /* AdditionalViewController.swift */; };
+		7128DF87267AF8170019FC09 /* AdditionalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128DF86267AF8170019FC09 /* AdditionalInfoViewModel.swift */; };
 		71377D1E266E458000DB1C4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71377D1D266E458000DB1C4D /* AppDelegate.swift */; };
 		71377D20266E458000DB1C4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71377D1F266E458000DB1C4D /* SceneDelegate.swift */; };
 		71377D22266E458000DB1C4D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71377D21266E458000DB1C4D /* LoginViewController.swift */; };
@@ -70,6 +71,7 @@
 		7123D3FE266F2431009C959B /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		7128DF82267AEB4D0019FC09 /* DetailIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIssueViewController.swift; sourceTree = "<group>"; };
 		7128DF84267AED3B0019FC09 /* AdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalViewController.swift; sourceTree = "<group>"; };
+		7128DF86267AF8170019FC09 /* AdditionalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoViewModel.swift; sourceTree = "<group>"; };
 		71377D1A266E458000DB1C4D /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71377D1D266E458000DB1C4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71377D1F266E458000DB1C4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				71FCE1A82670B2A30044038E /* IssueListViewModel.swift */,
 				71B040F626732DEA008819E8 /* FilterViewModel.swift */,
+				7128DF86267AF8170019FC09 /* AdditionalInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				71928E8F2671DF2800847111 /* Label.swift in Sources */,
 				71055560266F36FD0072065E /* Constant.swift in Sources */,
 				71B040F526732B82008819E8 /* FilterList.swift in Sources */,
+				7128DF87267AF8170019FC09 /* AdditionalInfoViewModel.swift in Sources */,
 				71928E852671C4D300847111 /* LoginDTO.swift in Sources */,
 				71928E8D2671DEDA00847111 /* Assignee.swift in Sources */,
 				71B040F926732EE7008819E8 /* FilterMemoryStorage.swift in Sources */,

@@ -2,17 +2,30 @@ import Foundation
 import RxSwift
 import Alamofire
 
-protocol NetworkPort {
-    static func get(_ url:URL?) -> Observable<IssueDTO>
-}
+class APIService {
 
-class APIService:NetworkPort {
+    static let shared:APIService = APIService()
     
-    static func get(_ url: URL?) -> Observable<IssueDTO> {
+    func getIssueInfo(_ url:URL) -> Observable<IssueDTO> {
+        return get(url)
+    }
+    
+    func getLabelInfo(_ url:URL) -> Observable<[Label]> {
+        return get(url)
+    }
+    
+    func getMilestoneInfo(_ url:URL) -> Observable<[String]> {
+        return get(url)
+    }
+    
+    func getAssigneeInfo(_ url:URL) -> Observable<[Assignee]> {
+        return get(url)
+    }
+    
+    private func get<T: Decodable>(_ url: URL) -> Observable<T> {
         return Observable.create { observer in
-            guard let url = url else { return Disposables.create()}
             AF.request(url, method: .get)
-                .responseDecodable(of: IssueDTO.self) { response in
+                .responseDecodable(of: T.self) { response in
                     switch response.result {
                     case .failure(let error):
                         observer.onError(error)
