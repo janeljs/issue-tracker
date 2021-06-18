@@ -10,15 +10,15 @@ class APIService {
         return get(url)
     }
     
-    func getLabelInfo(_ url:URL) -> Observable<[Label]> {
+    func getLabelInfo(_ url:URL) -> Observable<LabelDTO> {
         return get(url)
     }
     
-    func getMilestoneInfo(_ url:URL) -> Observable<[String]> {
+    func getMilestoneInfo(_ url:URL) -> Observable<MilestoneDTO> {
         return get(url)
     }
     
-    func getAssigneeInfo(_ url:URL) -> Observable<[Assignee]> {
+    func getAssigneeInfo(_ url:URL) -> Observable<AuthorDTO> {
         return get(url)
     }
     

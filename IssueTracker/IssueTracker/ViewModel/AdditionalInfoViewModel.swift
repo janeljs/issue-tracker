@@ -32,4 +32,8 @@ class AdditionalInfoViewModel: NSObject {
                 }
             }).disposed(by: rx.disposeBag)
     }
+    
+    private func checkStatus() {
+        
+    }
 }

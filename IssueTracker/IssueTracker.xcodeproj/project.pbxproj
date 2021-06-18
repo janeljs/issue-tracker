@@ -21,6 +21,9 @@
 		71377D27266E458100DB1C4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71377D26266E458100DB1C4D /* Assets.xcassets */; };
 		71377D2A266E458100DB1C4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71377D28266E458100DB1C4D /* LaunchScreen.storyboard */; };
 		71377D33266E47AC00DB1C4D /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71377D32266E47AC00DB1C4D /* OctoKit */; };
+		713E475F267C3A18009D810A /* AdditionalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713E475E267C3A18009D810A /* AdditionalDTO.swift */; };
+		713E4761267C3CCE009D810A /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713E4760267C3CCE009D810A /* Milestone.swift */; };
+		713E4763267C3CFD009D810A /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713E4762267C3CFD009D810A /* Author.swift */; };
 		71928E7F2671C06200847111 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E7E2671C06200847111 /* LoginManager.swift */; };
 		71928E852671C4D300847111 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E842671C4D300847111 /* LoginDTO.swift */; };
 		71928E872671CA6E00847111 /* LoginObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71928E862671CA6E00847111 /* LoginObserver.swift */; };
@@ -80,6 +83,9 @@
 		71377D26266E458100DB1C4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71377D29266E458100DB1C4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71377D2B266E458100DB1C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		713E475E267C3A18009D810A /* AdditionalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDTO.swift; sourceTree = "<group>"; };
+		713E4760267C3CCE009D810A /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		713E4762267C3CFD009D810A /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		71928E7E2671C06200847111 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		71928E842671C4D300847111 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		71928E862671CA6E00847111 /* LoginObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObserver.swift; sourceTree = "<group>"; };
@@ -235,6 +241,7 @@
 				7105555F266F36FD0072065E /* Constant.swift */,
 				71FCE19F2670AC540044038E /* IssueDTO.swift */,
 				71928E842671C4D300847111 /* LoginDTO.swift */,
+				713E475E267C3A18009D810A /* AdditionalDTO.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -275,6 +282,8 @@
 				71928E8C2671DEDA00847111 /* Assignee.swift */,
 				71928E8E2671DF2800847111 /* Label.swift */,
 				71B040F426732B82008819E8 /* FilterList.swift */,
+				713E4760267C3CCE009D810A /* Milestone.swift */,
+				713E4762267C3CFD009D810A /* Author.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,6 +506,7 @@
 				71928E8B2671CFD900847111 /* RedirectionViewController.swift in Sources */,
 				71FCE19C2670ABD60044038E /* APIService.swift in Sources */,
 				711CCE0B267842E700658550 /* CreateIssueViewController.swift in Sources */,
+				713E4761267C3CCE009D810A /* Milestone.swift in Sources */,
 				71377D22266E458000DB1C4D /* LoginViewController.swift in Sources */,
 				71377D1E266E458000DB1C4D /* AppDelegate.swift in Sources */,
 				71377D20266E458000DB1C4D /* SceneDelegate.swift in Sources */,
@@ -511,8 +521,10 @@
 				71B040FB26733BF8008819E8 /* FilterCell.swift in Sources */,
 				7128DF83267AEB4D0019FC09 /* DetailIssueViewController.swift in Sources */,
 				71928E8F2671DF2800847111 /* Label.swift in Sources */,
+				713E475F267C3A18009D810A /* AdditionalDTO.swift in Sources */,
 				71055560266F36FD0072065E /* Constant.swift in Sources */,
 				71B040F526732B82008819E8 /* FilterList.swift in Sources */,
+				713E4763267C3CFD009D810A /* Author.swift in Sources */,
 				7128DF87267AF8170019FC09 /* AdditionalInfoViewModel.swift in Sources */,
 				71928E852671C4D300847111 /* LoginDTO.swift in Sources */,
 				71928E8D2671DEDA00847111 /* Assignee.swift in Sources */,
