@@ -9,7 +9,7 @@ struct LabelDTO: Decodable {
 struct MilestoneDTO:Decodable {
     let labelsCount:Int
     let milestonesCount:Int
-    let labels:[Milestone]
+    let milestones:[Milestone]
 }
 
 struct AuthorDTO:Decodable {

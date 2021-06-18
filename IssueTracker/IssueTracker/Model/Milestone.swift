@@ -5,7 +5,7 @@ struct Milestone:Decodable {
     let title:String
     let description:String
     let createdDateTime:String
-    let dueData:String
+    let dueDate:String
     let openedIssueCount:Int
     let closedIssueCount:Int
 }

@@ -29,7 +29,7 @@ enum FilteredAPI {
 enum AdditionalAPI {
     static let label = "http://3.37.76.224/api/labels"
     static let milestone = "http://3.37.76.224/api/milestones"
-    static let assignee = "http://3.37.76.224/api/assignees"
+    static let author = "http://3.37.76.224/api/authors"
 }
 
 enum SectionTitle {

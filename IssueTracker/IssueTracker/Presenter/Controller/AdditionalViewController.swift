@@ -2,6 +2,7 @@ import UIKit
 
 class AdditionalViewController: UIViewController {
 
+    @IBOutlet weak var addtionalTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,11 +43,19 @@ private extension AdditionalViewController {
     
     private func bind() {
         bindTitleLabel()
+        bindTableView()
     }
     
     private func bindTitleLabel() {
         viewModel.titleInfo
             .drive(titleLabel.rx.text)
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func bindTableView() {
+        viewModel.contentInfo
+            .drive(addtionalTableView.rx.items(cellIdentifier: "AddtionalCell", cellType: UITableViewCell.self)) { _, data, cell in
+                cell.textLabel?.text = data
+            }.disposed(by: rx.disposeBag)
     }
 }
