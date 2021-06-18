@@ -4,7 +4,7 @@ import RxCocoa
 
 class AdditionalInfoViewModel: NSObject {
     
-    let apiCallCheck = BehaviorRelay(value: 0)
+    let apiCallCheck = BehaviorRelay(value: "")
     
     private var storage = PublishRelay<[String]>()
     
@@ -12,28 +12,15 @@ class AdditionalInfoViewModel: NSObject {
         return storage.asDriver(onErrorJustReturn: [])
     }()
     
-    override init() {
-        super.init()
-        setupCallAPI()
-    }
+    lazy var titleInfo:Driver<String>={
+        return apiCallCheck.asDriver(onErrorJustReturn: "")
+    }()
     
     func configure(_ value:Int) {
-        apiCallCheck.accept(value)
-    }
-    
-    private func setupCallAPI() {
-        apiCallCheck
-            .subscribe(onNext: { value in
-                switch value {
-                case 1: break
-                case 2: break
-                default:
-                    break
-                }
-            }).disposed(by: rx.disposeBag)
-    }
-    
-    private func checkStatus() {
-        
+        switch value {
+        case 1: apiCallCheck.accept("Milestone")
+        case 2: apiCallCheck.accept("Author")
+        default: apiCallCheck.accept("Label")
+        }
     }
 }

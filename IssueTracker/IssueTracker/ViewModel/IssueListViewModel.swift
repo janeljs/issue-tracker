@@ -51,7 +51,7 @@ private extension IssueListViewModel {
         searchText.asObservable()
             .subscribe(onNext: { [weak self] text in
                 self?.issueList.asObservable()
-                    .map{$0.filter{$0.title.hasPrefix(text)}}
+                    .map{$0.filter{$0.title.hasPrefix(text) || $0.comment.hasPrefix(text)}}
                     .bind(to: self?.filteredIssues ?? BehaviorRelay<[IssueInfo]>(value: []))
                     .disposed(by: self?.rx.disposeBag ?? DisposeBag())
             }).disposed(by: rx.disposeBag)
