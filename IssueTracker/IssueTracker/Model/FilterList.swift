@@ -7,10 +7,9 @@ struct FilterList: Equatable {
 
 struct SectionOfFilterList {
     var header:String
-    var items: [Item]
+    var items: [FilterList]
 }
 extension SectionOfFilterList: SectionModelType {
-    typealias Item = FilterList
     
     init(original: SectionOfFilterList, items: [FilterList]) {
         self = original
