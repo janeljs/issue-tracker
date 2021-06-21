@@ -9,6 +9,9 @@ protocol MemoryStorageType {
     
     @discardableResult
     func issueList() -> Driver<[IssueInfo]>
+    
+    @discardableResult
+    func update(_ issue:IssueInfo, _ index:Int) -> Observable<IssueInfo>
 }
 
 class IssueMemoryStorage: MemoryStorageType {
@@ -26,5 +29,20 @@ class IssueMemoryStorage: MemoryStorageType {
     @discardableResult
     func issueList() -> Driver<[IssueInfo]> {
         return store.asDriver(onErrorJustReturn: [])
-    }    
+    }
+    
+    @discardableResult
+    func update(_ issue: IssueInfo, _ index:Int) -> Observable<IssueInfo> {
+        list.remove(at: index)
+        list.insert(issue, at: index)
+        store.accept(list)
+        return Observable.just(issue)
+    }
+    
+    func checkIndexRedundant(of issue: IssueInfo) -> Int? {
+        guard let index = list.firstIndex(where: { $0.id == issue.id}) else {
+            return nil
+        }
+        return index
+    }
 }

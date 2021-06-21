@@ -4,6 +4,9 @@ enum ViewControllerID {
     static let issueFilter = "FilterVC"
     static let tabBar = "TabBarVC"
     static let redirection = "RedirectionVC"
+    static let createIssue = "CreateIssueVC"
+    static let detailIssue = "DetailIssueVC"
+    static let additionalInfo = "AdditionalInfoVC"
 }
 
 enum CellID {
@@ -11,15 +14,29 @@ enum CellID {
 }
 
 enum API {
-    static let getOpenIssue = URL(string: "http://3.37.76.224/api/issues?status=open")
+    static let getIssueInfo = "http://3.37.76.224/api/issues?status=open"
     static let githubLogin = URL(string: "https://github.com/login/oauth/authorize?client_id=65a58e22f27700054cb6&scope=user&redirect_uri=IssueTracker://tracker")
     static let accessToken = "http://3.37.76.224/api/login?code="
+}
+
+enum FilteredAPI {
+    static let stauts = "http://3.37.76.224/api/issues?status=open"
+    static let author = stauts+"&author="
+    static let label = stauts+"&label="
+    static let milestone = stauts+"&milestone="
+}
+
+enum AdditionalAPI {
+    static let label = "http://3.37.76.224/api/labels"
+    static let milestone = "http://3.37.76.224/api/milestones"
+    static let author = "http://3.37.76.224/api/authors"
 }
 
 enum SectionTitle {
     static let status = "상태"
     static let author = "작성자"
     static let label = "레이블"
+    static let milestone = "마일스톤"
 }
 
 enum SectionContent {
@@ -29,4 +46,8 @@ enum SectionContent {
     static let repliedByMe = "내가 댓글을 남긴 이슈"
     static let closed = "닫힌 이슈"
     static let noLabel = "레이블 없음"
+}
+
+enum TextView {
+    static let placeHolder = "코멘트를 입력해주세요"
 }

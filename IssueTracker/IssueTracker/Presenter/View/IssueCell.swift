@@ -12,16 +12,16 @@ class IssueCell: UICollectionViewCell {
         self.titleLabel.text = title
         self.commnetLabel.text = comment
         self.milestoneLabel.text = milestone
+        
+        if labels.count * 2 == labelStackView.subviews.count { return }
         for index in 0..<labels.count {
             let label = LabelView()
             let pedding = UIView()
             pedding.translatesAutoresizingMaskIntoConstraints = false
             pedding.widthAnchor.constraint(equalToConstant: 2).isActive = true
             label.configure(labels[index].name, labels[index].color.backgroundColorCode, labels[index].color.textColorCode)
-            if labels.count * 2 == labelStackView.subviews.count { continue }
             labelStackView.addArrangedSubview(label)
             labelStackView.addArrangedSubview(pedding)
-            
         }
     }
 }

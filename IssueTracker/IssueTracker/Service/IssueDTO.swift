@@ -6,12 +6,12 @@ struct IssueDTO: Decodable {
 
 struct IssueInfo: Decodable {
     let id:Int
-    let title:String
-    let comment:String
+    var title:String
+    var comment:String
     let authorAvatarUrl:String
     let createdDateTime:String
     let commentNumber:Int
-    let assignees:[Assignee]
-    let labels:[Label]
-    let milestone:String
+    var assignees:[Assignee]
+    var labels:[Label]
+    var milestone:String
 }

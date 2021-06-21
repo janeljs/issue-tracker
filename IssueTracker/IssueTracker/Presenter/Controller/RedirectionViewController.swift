@@ -14,11 +14,11 @@ class RedirectionViewController: UIViewController {
     }
 }
 
+//MARK: - Setup Observer
 private extension RedirectionViewController {
     
     private func setupObserver() {
-        LoginObserver.validLoginTry.addObserver().bind { [weak self] object in
-            guard let _ = object as? LoginDTO else { return }
+        LoginObserver.validLoginTry.addObserver().bind { [weak self] _ in
             self?.moveToNextVC()
         }.disposed(by: rx.disposeBag)
         

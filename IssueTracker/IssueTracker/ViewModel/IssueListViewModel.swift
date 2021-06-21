@@ -15,10 +15,12 @@ class IssueListViewModel: NSObject {
     override init() {
         super.init()
         setupSearchText()
+        getIssueList()
     }
     
     func getIssueList() {
-        APIService.get(API.getOpenIssue)
+        guard let url = URL(string: API.getIssueInfo) else { return }
+        APIService.shared.getIssueInfo(url)
             .subscribe(onNext: { [weak self] issue in
                 self?.storage.append(issue.issues)
             }, onError: { error in
@@ -29,6 +31,18 @@ class IssueListViewModel: NSObject {
     func issuList() -> Driver<[IssueInfo]> {
         return filteredIssues.asDriver(onErrorJustReturn: [])
     }
+    
+    func save(_ issue:IssueInfo) {
+        if let index = storage.checkIndexRedundant(of: issue) {
+            storage.update(issue, index)
+        } else {
+            storage.append([issue])
+        }
+    }
+    
+    func bindFilteredInfo(_ issue:[IssueInfo]) {
+        filteredIssues.accept(issue)
+    }
 }
 
 private extension IssueListViewModel {
@@ -37,7 +51,7 @@ private extension IssueListViewModel {
         searchText.asObservable()
             .subscribe(onNext: { [weak self] text in
                 self?.issueList.asObservable()
-                    .map{$0.filter{$0.title.hasPrefix(text)}}
+                    .map{$0.filter{$0.title.hasPrefix(text) || $0.comment.hasPrefix(text)}}
                     .bind(to: self?.filteredIssues ?? BehaviorRelay<[IssueInfo]>(value: []))
                     .disposed(by: self?.rx.disposeBag ?? DisposeBag())
             }).disposed(by: rx.disposeBag)

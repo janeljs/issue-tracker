@@ -30,28 +30,37 @@ class FilterCell: UITableViewCell {
         contentLabel.text = text
     }
     
-    func isSelected(_ status:Bool) {
-        switch status {
-        case true:
-            contentLabel.font = UIFont.boldSystemFont(ofSize: contentLabel.font.pointSize)
-            selectedCheck.isHidden = false
-        case false:
-            contentLabel.font = .none
-            selectedCheck.isHidden = true
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                contentLabel.font = UIFont.boldSystemFont(ofSize: contentLabel.font.pointSize)
+                selectedCheck.isHidden = false
+            } else {
+                contentLabel.font = .none
+                selectedCheck.isHidden = true
+            }
         }
     }
 }
 
+//MARK: - Setup Contraints
 private extension FilterCell {
     
     private func setupSubViews() {
+        setupContentLabel()
+        setupSelectedView()
+    }
+    
+    private func setupContentLabel() {
         addSubview(contentLabel)
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
         contentLabel.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        
+    }
+    
+    private func setupSelectedView() {
         addSubview(selectedCheck)
         selectedCheck.translatesAutoresizingMaskIntoConstraints = false
         selectedCheck.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true

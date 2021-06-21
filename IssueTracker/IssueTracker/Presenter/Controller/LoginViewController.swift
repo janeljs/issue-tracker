@@ -10,13 +10,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
+        setupButtonAction()
     }
 }
 
+//MARK: - Setup Button Action
 private extension LoginViewController {
     
-    private func setupButton() {
+    private func setupButtonAction() {
         setupLoginButton()
         setupGithubLoginButton()
     }
@@ -32,10 +33,14 @@ private extension LoginViewController {
         githubLogInButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 LoginManager.loginPost(API.githubLogin)
-                guard let redirectionVC = self?.storyboard?.instantiateViewController(withIdentifier: ViewControllerID.redirection) else { return }
-                redirectionVC.modalPresentationStyle = .fullScreen
-                self?.present(redirectionVC, animated: true, completion: nil)
+                self?.moveToRedirectionVC()
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func moveToRedirectionVC() {
+        guard let redirectionVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.redirection) else { return }
+        redirectionVC.modalPresentationStyle = .fullScreen
+        present(redirectionVC, animated: true, completion: nil)
     }
     
     private func moveToNextVC() {

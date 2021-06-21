@@ -7,8 +7,12 @@ class IssueListViewController: UIViewController {
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
     @IBOutlet weak var issueFilterButton: UIButton!
+    @IBOutlet weak var newIssueButton: UIButton!
     
     private let viewModel = IssueListViewModel()
+    private var labels:[Label]?
+    private var mileStone:Set<String> = []
+    private var assignee:[Assignee]?
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
@@ -20,30 +24,43 @@ class IssueListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainView()
-        setupDelegate()
         bind()
     }
 }
 
+//MARK: - Setup
 private extension IssueListViewController {
     
     private func setMainView() {
-        setupIssueFilterButton()
+        setupCollectionView()
+        setupButtonAction()
         setupRefreshControl()
+    }
+    
+    private func setupCollectionView() {
+        setupDelegate()
+        setupCellTouched()
+    }
+    
+    private func setupButtonAction() {
+        setupIssueFilterButton()
+        setupNewIssueButton()
     }
     
     private func setupIssueFilterButton() {
         issueFilterButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let filterVC = self?.storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) else { return }
-                self?.present(filterVC, animated: true, completion: nil)
+                self?.moveToFilterVC()
             }).disposed(by: rx.disposeBag)
     }
     
-    private func setupDelegate() {
-        issueCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+    private func setupNewIssueButton() {
+        newIssueButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToCreateIssueVC(nil)
+            }).disposed(by: rx.disposeBag)
     }
-    
+
     private func setupRefreshControl() {
         issueCollectionView.refreshControl = UIRefreshControl()
         issueCollectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .allEvents)
@@ -54,8 +71,26 @@ private extension IssueListViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    private func setupCellTouched() {
+        issueCollectionView.rx.modelSelected(IssueInfo.self)
+            .subscribe(onNext: { [weak self] issueInfo in
+                self?.moveToDetailIssueVC(issueInfo)
+            }).disposed(by: rx.disposeBag)
+    }
+
+    private func setupDelegate() {
+        issueCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupFilterInfo(_ labels:[Label], _ milestone:String, _ assignee:[Assignee]) {
+        self.labels = labels
+        self.mileStone.insert(milestone)
+        self.assignee = assignee
+    }
 }
 
+//MARK: - Bind
 private extension IssueListViewController {
     
     private func bind() {
@@ -64,11 +99,10 @@ private extension IssueListViewController {
     }
     
     private func bindIssueList() {
-        viewModel.getIssueList()
-        
         viewModel.issuList()
-            .drive(issueCollectionView.rx.items(cellIdentifier: IssueCell.identifier, cellType: IssueCell.self)) { _, issue, cell in
+            .drive(issueCollectionView.rx.items(cellIdentifier: IssueCell.identifier, cellType: IssueCell.self)) { [weak self] _, issue, cell in
                 cell.configure(issue.title, issue.comment, milestone: issue.milestone, labels: issue.labels)
+                self?.setupFilterInfo(issue.labels, issue.milestone, issue.assignees)
             }.disposed(by: rx.disposeBag)
     }
     
@@ -80,7 +114,30 @@ private extension IssueListViewController {
     }
 }
 
+//MARK: - Action
 private extension IssueListViewController {
+    
+    private func moveToFilterVC() {
+        guard let filterVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.issueFilter) as? FilterIssueViewController else { return }
+        filterVC.delegate = self
+        if let labels = labels, let assignee = assignee  {
+            filterVC.configure(labels, mileStone, assignee)
+        }
+        present(filterVC, animated: true, completion: nil)
+    }
+    
+    private func moveToCreateIssueVC(_ issue:IssueInfo?) {
+        guard let moveToCreateIssueVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.createIssue) as? CreateIssueViewController else { return }
+        navigationController?.pushViewController(moveToCreateIssueVC, animated: true)
+    }
+    
+    private func moveToDetailIssueVC(_ issue:IssueInfo) {
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ViewControllerID.detailIssue) as? DetailIssueViewController else {
+            return
+        }
+        detailVC.configure(issue)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     
     @objc private func refresh() {
         setupSearchController()
@@ -88,6 +145,7 @@ private extension IssueListViewController {
     }
 }
 
+//MARK: - CollectionViewDelegate
 extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -98,5 +156,11 @@ extension IssueListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
+extension IssueListViewController: DeliveryFilteredInfo {
+    func deliveryData(of issueInfo: [IssueInfo]) {
+        viewModel.bindFilteredInfo(issueInfo)
     }
 }
