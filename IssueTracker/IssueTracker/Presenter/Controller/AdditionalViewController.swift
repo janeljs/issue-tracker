@@ -65,7 +65,7 @@ private extension AdditionalViewController {
                 self?.selectedData = model
             }.disposed(by: rx.disposeBag)
         
-        addtionalTableView.rx.itemSelected
+        addtionalTableView.rx.itemDeselected
             .subscribe(onNext: { [weak self] indexPath in
                 let cell = self?.addtionalTableView.cellForRow(at: indexPath)
                 cell?.textLabel?.font = .none
