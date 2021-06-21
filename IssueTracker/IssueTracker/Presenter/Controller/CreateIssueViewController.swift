@@ -5,6 +5,9 @@ import MarkdownView
 
 class CreateIssueViewController: UIViewController {
     
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var milestoneLabel: UILabel!
+    @IBOutlet weak var additionalLabel: UILabel!
     @IBOutlet var additionalInfoButton: [UIButton]!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
@@ -19,9 +22,12 @@ class CreateIssueViewController: UIViewController {
         return md
     }()
     
+    private let viewModel = CreateInfoViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
+        bind()
     }
 }
 
@@ -75,6 +81,7 @@ private extension CreateIssueViewController {
         additionalInfoButton.enumerated().forEach { index, button in
             button.rx.tap
                 .subscribe(onNext: { [weak self] _ in
+                    self?.viewModel.setupStatus(index)
                     self?.moveToAdditionalIssueVC(index)
                 }).disposed(by: rx.disposeBag)
         }
@@ -147,6 +154,40 @@ private extension CreateIssueViewController {
             return
         }
         additionalVC.configure(info)
+        additionalVC.delegate = self
         present(additionalVC, animated: true, completion: nil)
+    }
+}
+
+private extension CreateIssueViewController {
+    
+    private func bind() {
+        bindLabelText()
+        bindMilestoneText()
+        bindAuthorText()
+    }
+    
+    private func bindLabelText() {
+        viewModel.labelBind
+            .drive(additionalLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func bindMilestoneText() {
+        viewModel.milestoneBind
+            .drive(milestoneLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func bindAuthorText() {
+        viewModel.authorBind
+            .drive(authorLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+    }
+}
+
+extension CreateIssueViewController: AdditionalInfoProtocol {
+    func delivery(_ info: String) {
+        viewModel.deliveryInfo(info)
     }
 }

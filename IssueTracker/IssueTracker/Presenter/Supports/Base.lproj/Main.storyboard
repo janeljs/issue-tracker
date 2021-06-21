@@ -474,16 +474,27 @@
                                                     <imageReference key="image" image="chevron.forward" catalog="system" symbolScale="large"/>
                                                 </state>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THz-GG-nJn">
+                                                <rect key="frame" x="223" y="0.0" width="92" height="66.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="e8d-HR-P0u" firstAttribute="width" secondItem="4Ib-s5-CeD" secondAttribute="width" multiplier="0.0418994" id="8iB-3u-cmS"/>
                                             <constraint firstAttribute="bottom" secondItem="ndc-85-Bpi" secondAttribute="bottom" id="Glh-gW-KGC"/>
+                                            <constraint firstAttribute="bottom" secondItem="THz-GG-nJn" secondAttribute="bottom" id="IfV-lP-9Zr"/>
+                                            <constraint firstItem="THz-GG-nJn" firstAttribute="width" secondItem="4Ib-s5-CeD" secondAttribute="width" multiplier="0.256983" id="LQ9-tx-vzL"/>
+                                            <constraint firstItem="THz-GG-nJn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ndc-85-Bpi" secondAttribute="trailing" priority="750" id="Njb-sw-RoJ"/>
                                             <constraint firstItem="e8d-HR-P0u" firstAttribute="centerY" secondItem="4Ib-s5-CeD" secondAttribute="centerY" id="VMD-tN-6cp"/>
                                             <constraint firstAttribute="trailing" secondItem="e8d-HR-P0u" secondAttribute="trailing" multiplier="1.03" constant="1" id="WgV-bA-Sbl"/>
+                                            <constraint firstItem="THz-GG-nJn" firstAttribute="top" secondItem="4Ib-s5-CeD" secondAttribute="top" id="Wq2-NA-FpG"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ndc-85-Bpi" secondAttribute="trailing" priority="750" id="gob-CM-mzK"/>
                                             <constraint firstItem="ndc-85-Bpi" firstAttribute="height" secondItem="4Ib-s5-CeD" secondAttribute="height" id="gr8-iy-sxD"/>
                                             <constraint firstItem="e8d-HR-P0u" firstAttribute="height" secondItem="4Ib-s5-CeD" secondAttribute="height" multiplier="0.331658" id="ifc-Xv-h6v"/>
+                                            <constraint firstItem="e8d-HR-P0u" firstAttribute="leading" secondItem="THz-GG-nJn" secondAttribute="trailing" multiplier="1.05" constant="1" id="pBV-w6-IM4"/>
                                             <constraint firstItem="ndc-85-Bpi" firstAttribute="top" secondItem="4Ib-s5-CeD" secondAttribute="top" id="paT-oK-QdN"/>
                                             <constraint firstItem="ndc-85-Bpi" firstAttribute="leading" secondItem="4Ib-s5-CeD" secondAttribute="leading" id="tIG-uC-VD6"/>
                                         </constraints>
@@ -525,18 +536,28 @@
                                                     <imageReference key="image" image="chevron.forward" catalog="system" symbolScale="large"/>
                                                 </state>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlT-fb-Olk">
+                                                <rect key="frame" x="223" y="0.0" width="92" height="66.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Z7A-m8-csK" firstAttribute="width" secondItem="T2V-Vw-iKT" secondAttribute="width" multiplier="0.0418994" id="3S5-hg-Icg"/>
                                             <constraint firstItem="Pr5-wS-BnA" firstAttribute="leading" secondItem="T2V-Vw-iKT" secondAttribute="leading" id="5I4-cL-h58"/>
                                             <constraint firstAttribute="trailing" secondItem="fUY-Qs-84t" secondAttribute="trailing" id="5dQ-E9-QU9"/>
+                                            <constraint firstItem="WlT-fb-Olk" firstAttribute="top" secondItem="T2V-Vw-iKT" secondAttribute="top" id="9lf-SO-0zc"/>
+                                            <constraint firstItem="WlT-fb-Olk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="P0X-MZ-0TD" secondAttribute="trailing" priority="750" id="DXP-Mj-SyM"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P0X-MZ-0TD" secondAttribute="trailing" priority="750" id="FoC-mc-uGq"/>
                                             <constraint firstItem="Z7A-m8-csK" firstAttribute="height" secondItem="T2V-Vw-iKT" secondAttribute="height" multiplier="0.33" id="OYo-OL-YQe"/>
                                             <constraint firstAttribute="trailing" secondItem="NAY-dh-kGK" secondAttribute="trailing" id="PAz-Y7-Zhr"/>
+                                            <constraint firstItem="Z7A-m8-csK" firstAttribute="leading" secondItem="WlT-fb-Olk" secondAttribute="trailing" multiplier="1.05" constant="1" id="RUE-Io-oID"/>
                                             <constraint firstItem="fUY-Qs-84t" firstAttribute="leading" secondItem="T2V-Vw-iKT" secondAttribute="leading" id="Te6-WP-AIO"/>
                                             <constraint firstItem="P0X-MZ-0TD" firstAttribute="leading" secondItem="T2V-Vw-iKT" secondAttribute="leading" id="YnR-Sm-sNt"/>
                                             <constraint firstItem="NAY-dh-kGK" firstAttribute="leading" secondItem="T2V-Vw-iKT" secondAttribute="leading" id="ZsD-3A-QZD"/>
+                                            <constraint firstAttribute="bottom" secondItem="WlT-fb-Olk" secondAttribute="bottom" constant="2.8421709430404007e-14" id="cBd-sm-gG2"/>
                                             <constraint firstAttribute="trailing" secondItem="Pr5-wS-BnA" secondAttribute="trailing" id="cQF-cR-iIa"/>
                                             <constraint firstItem="P0X-MZ-0TD" firstAttribute="height" secondItem="T2V-Vw-iKT" secondAttribute="height" id="cbt-29-cU6"/>
                                             <constraint firstAttribute="bottom" secondItem="Pr5-wS-BnA" secondAttribute="bottom" id="dza-VZ-Yrv"/>
@@ -544,6 +565,7 @@
                                             <constraint firstItem="Z7A-m8-csK" firstAttribute="centerY" secondItem="T2V-Vw-iKT" secondAttribute="centerY" id="mf3-yr-tWH"/>
                                             <constraint firstAttribute="trailing" secondItem="Z7A-m8-csK" secondAttribute="trailing" multiplier="1.03" constant="1" id="orO-hk-5DX"/>
                                             <constraint firstAttribute="bottom" secondItem="P0X-MZ-0TD" secondAttribute="bottom" id="uzK-7M-kfe"/>
+                                            <constraint firstItem="WlT-fb-Olk" firstAttribute="width" secondItem="T2V-Vw-iKT" secondAttribute="width" multiplier="0.256983" id="zLE-c5-42A"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76s-VN-Gev">
@@ -562,17 +584,28 @@
                                                     <imageReference key="image" image="chevron.forward" catalog="system" symbolScale="large"/>
                                                 </state>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-py-ciA">
+                                                <rect key="frame" x="223" y="0.0" width="92" height="66.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qcj-Hz-jPJ" secondAttribute="trailing" priority="750" id="0xT-Ot-ZKd"/>
                                             <constraint firstItem="Mjm-x0-44s" firstAttribute="width" secondItem="76s-VN-Gev" secondAttribute="width" multiplier="0.0418994" id="65e-qF-Pcd"/>
                                             <constraint firstItem="Mjm-x0-44s" firstAttribute="height" secondItem="76s-VN-Gev" secondAttribute="height" multiplier="0.331658" id="6GB-mG-G4l"/>
+                                            <constraint firstItem="Mjm-x0-44s" firstAttribute="leading" secondItem="rLr-py-ciA" secondAttribute="trailing" multiplier="1.05" constant="1" id="6oO-LI-sPr"/>
+                                            <constraint firstItem="rLr-py-ciA" firstAttribute="width" secondItem="76s-VN-Gev" secondAttribute="width" multiplier="0.256983" id="BVh-yh-bIY"/>
                                             <constraint firstAttribute="trailing" secondItem="Mjm-x0-44s" secondAttribute="trailing" multiplier="1.03" constant="1" id="GPJ-AC-NQr"/>
                                             <constraint firstItem="qcj-Hz-jPJ" firstAttribute="height" secondItem="76s-VN-Gev" secondAttribute="height" id="KP7-Pi-V80"/>
                                             <constraint firstItem="Mjm-x0-44s" firstAttribute="centerY" secondItem="76s-VN-Gev" secondAttribute="centerY" id="LHo-HX-Z2Q"/>
                                             <constraint firstAttribute="bottom" secondItem="qcj-Hz-jPJ" secondAttribute="bottom" id="Ldd-OD-YVo"/>
+                                            <constraint firstItem="rLr-py-ciA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qcj-Hz-jPJ" secondAttribute="trailing" priority="750" id="NEU-yW-aFU"/>
                                             <constraint firstItem="qcj-Hz-jPJ" firstAttribute="leading" secondItem="76s-VN-Gev" secondAttribute="leading" id="RZm-dB-46T"/>
+                                            <constraint firstItem="rLr-py-ciA" firstAttribute="top" secondItem="76s-VN-Gev" secondAttribute="top" id="Xx4-zt-b5B"/>
+                                            <constraint firstAttribute="bottom" secondItem="rLr-py-ciA" secondAttribute="bottom" id="aJR-ir-MPn"/>
                                             <constraint firstItem="qcj-Hz-jPJ" firstAttribute="top" secondItem="76s-VN-Gev" secondAttribute="top" id="gT6-si-gJA"/>
                                         </constraints>
                                     </view>
@@ -637,9 +670,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="additionalLabel" destination="THz-GG-nJn" id="V5C-OZ-rEv"/>
+                        <outlet property="authorLabel" destination="rLr-py-ciA" id="LNV-Ml-HVI"/>
                         <outlet property="cancelButton" destination="174-n5-biU" id="eYg-kf-DVU"/>
                         <outlet property="commentTextView" destination="rZi-OI-LVh" id="ZVx-gk-Epo"/>
                         <outlet property="markDownSegmentControl" destination="aGr-6C-HxG" id="5fT-uU-mlw"/>
+                        <outlet property="milestoneLabel" destination="WlT-fb-Olk" id="OgL-tX-gqs"/>
                         <outlet property="saveButton" destination="0YC-H0-J3h" id="QyQ-21-KQX"/>
                         <outlet property="titleTextField" destination="jYm-8H-n5e" id="umO-Sd-J3O"/>
                         <outletCollection property="additionalInfoButton" destination="e8d-HR-P0u" collectionClass="NSMutableArray" id="CDs-SQ-zEJ"/>
