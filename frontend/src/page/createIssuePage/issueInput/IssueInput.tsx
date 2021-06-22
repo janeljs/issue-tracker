@@ -105,7 +105,7 @@ const IssueInputBlock = styled.div`
     padding: 16px 24px;
   }
   .input__file {
-    height: 0px;
+    // height: 0px;
   }
   .input__lengthCheck{
     position: absolute;

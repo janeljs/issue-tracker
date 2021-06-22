@@ -4,31 +4,12 @@ import PrimaryButton from 'components/atom/PrimaryButton';
 import PrimaryOutlinedButton from 'components/atom/PrimaryOutlinedButton';
 import MilestoneAdd from 'page/milestonePage/MilestoneAdd';
 import styled from 'styled-components';
-import { labelMilestoneClickedState, getMilestones } from 'store/labelMilestoneStore';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { labelMilestoneClickedState } from 'store/labelMilestoneStore';
+import { useSetRecoilState } from 'recoil';
 import MilestoneIcon from 'components/atom/MilestoneIcon';
 import MilestoneItem from 'page/milestonePage/MilestoneItem';
 import { ReactComponent as CloseIcon } from 'assets/icon/CloseIcon.svg';
-
-interface MilesetoneDetails{
-  id: number;
-  title: string;
-  checked: boolean;
-  openedIssueCount: number;
-  closedIssueCount: number;
-  createdDateTime: string;
-  description: string;
-  dueDate: string;
-}
-interface MilestoneType{
-  labelsCount: number;
-  milestonesCount: number;
-  milestones: MilesetoneDetails[]
-}
 export default function MilestonePage() {
-  const milestoneData = useRecoilValue(getMilestones)
-  // const {id, title, decription, openedIssueCount, closedIssueCount, createdDateTime, dueDate, checked}:MilesetoneDetails = milestoneData
-
   const setLabelMilestoneState = useSetRecoilState(labelMilestoneClickedState);
   setLabelMilestoneState({ label: false, milestone: true });
 

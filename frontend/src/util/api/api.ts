@@ -3,7 +3,6 @@ interface APItype {
   tabType: string;
   createIssue: string;
   getFileURL: string;
-  getMilestone: string;
   login: (code: string) => string;
 }
 const basicURL = `http://3.37.76.224/api`;
@@ -13,7 +12,6 @@ const API: APItype = {
   tabType: basicURL + `/issues/form`,
   createIssue: basicURL + `/issues/form`,
   getFileURL: basicURL +`/images`,
-  getMilestone: basicURL + `/milestones`,
   login: (code: string) => basicURL + '/login?code=' + code,
 };
 

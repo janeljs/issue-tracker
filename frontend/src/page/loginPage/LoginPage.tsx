@@ -1,40 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import LoginLogo from 'page/loginPage/loginLogo/LoginLogo';
 import SocialLoginBtn from 'page/loginPage/socialLoginBtn/SocialLoginBtn';
 import LoginForm from 'page/loginPage/loginForm/LoginForm';
 import Copyright from 'components/common/Copyright';
-import { useSetRecoilState } from 'recoil';
-import { controlLoginState } from 'store/loginStore';
-import { fetchLogin } from 'util/api/fetchLogin';
-import { useHistory } from 'react-router-dom'
+
+
 export default function LoginPage() {
-  const history = useHistory()
-  const setLoginData = useSetRecoilState(controlLoginState);
-
-  const query = window.location.search; 
-  const isLogin = () => !!localStorage.getItem('token');
-  useEffect(()=>{
-    if (isLogin()) return history.push('/main');
-  },[]) //app에서 구현 후 삭제하기
-
-  useEffect(() => {
-    if (query==='') return;
-    const loginCode = query.split('=')[1];
-    getLoginUserData(loginCode);
-  }, [query]);
-
-  const getLoginUserData = async (loginCode: string) => {
-    try {
-      const loginData = await fetchLogin(loginCode);
-      setLoginData({isLogin: true, loginData: loginData});
-      localStorage.setItem('token', loginData.token);
-      history.push('/main');
-    } catch (err) {
-      throw err;
-    }
-  };
-
   return (
     <LoginPageBlock>
       <div className='social-login'>

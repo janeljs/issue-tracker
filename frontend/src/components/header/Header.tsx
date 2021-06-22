@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@materi
 import { makeStyles } from '@material-ui/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { controlLoginState } from 'store/loginStore';
+import { isLoginState, loginDataState } from 'store/loginStore';
 import ProfileImg from 'components/atom/ProfileImg';
 import { getIssueTrigger } from 'store/issueInfoStore';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,8 @@ function Header() {
   const classes = useStyle();
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
-  const {isLogin, loginData} = useRecoilValue(controlLoginState);
+  const loginData = useRecoilValue(loginDataState);
+  const isLogin = useRecoilValue(isLoginState);
   const setIssueTrigger = useSetRecoilState(getIssueTrigger);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
