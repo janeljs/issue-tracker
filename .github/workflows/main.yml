@@ -5,12 +5,12 @@ name: issue-tracker
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the team-06 branch
-#   push:
-#     branches: 
-#       - BE-dev
-#   pull_request:
-#     branches: 
-#       - BE-dev
+  push:
+    branches: 
+      - team-06
+  pull_request:
+    branches: 
+      - team-06
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

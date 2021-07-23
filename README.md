@@ -1,4 +1,4 @@
-# 팀 소개
+# Team 06
 ![image](https://user-images.githubusercontent.com/68000537/122493911-74fb6f80-d023-11eb-9397-9dd73318f97b.png)
 
 ### iOS
@@ -10,39 +10,36 @@
 - 이노([@eNoLJ](https://github.com/eNoLJ))
 - Jane([@janeljs](https://github.com/janeljs))
 
-# IOS
-## IssueTracker 진행상황
-- [WIKI - iOS ](https://github.com/janeljs/issue-tracker/wiki/%5BiOS%5D)
+<br/>
+
+# Team Wiki
+> 기능 구현 및 기술 상세는 각 개발 파트별 위키에서 확인하실 수 있습니다. 
+- [WIKI - iOS](https://github.com/janeljs/issue-tracker/wiki/%5BiOS%5D)
+- [WIKI - FE](https://github.com/janeljs/issue-tracker/wiki/%5BFE%5D%EC%A0%95%EB%A6%AC)
+- [WIKI - BE](https://github.com/janeljs/issue-tracker/wiki/%5BBE%5D)
 
 
-# FE
+<br/>
 
-## 실행화면
+# Demo
+#### 로그인/로그아웃 화면
+![](https://images.velog.io/images/skawnkk/post/99847daf-1e84-4ee0-8ec8-cf9684a3503a/0722%EB%A1%9C%EA%B7%B8%EC%9D%B8%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83.gif)
 
-![FE-1차 실행화면](https://user-images.githubusercontent.com/67357426/122525609-5f526e00-d054-11eb-96a1-fb73c86a4320.gif)
+#### 이슈 생성 및 리스트
+![](https://images.velog.io/images/skawnkk/post/dc2e9eae-b327-4fa5-968f-1488d494a99d/0722%EC%9D%B4%EC%8A%88%EC%83%9D%EC%84%B1%EB%B0%8F%EC%9E%91%EC%84%B1.gif)
 
-## IssueTracker 진행상황
-- [WIKI - FE 정리](https://github.com/janeljs/issue-tracker/wiki/%5BFE%5D%EC%A0%95%EB%A6%AC)
+#### 라벨 관리
+![](https://images.velog.io/images/skawnkk/post/59c214b4-2a81-417c-a3bb-856caed8d0e8/0722%EB%9D%BC%EB%B2%A8%ED%8E%B8%EC%A7%91.gif)
 
+#### 마일스톤 관리
+![](https://images.velog.io/images/skawnkk/post/a1ad3b46-ea9c-4d11-8224-344422d69b75/0722%EB%A7%88%EC%9D%BC%EC%8A%A4%ED%86%A4%ED%8E%B8%EC%A7%91.gif)
 
-# BE
-## 기술 스택
-- Java
-- Spring boot, Spring Data JPA, Querydsl
-- AWS EC2, S3, VPC, RDS, Code Deploy
-- Nginx
-- MySQL
+#### 이슈 필터 기능
+![](https://images.velog.io/images/skawnkk/post/a0194d82-d285-458b-81a6-4aa41118ae64/0722%ED%95%84%ED%84%B0.gif)
 
-## API 구조
-- [API 구조 초안](https://github.com/janeljs/issue-tracker/wiki/API-%EA%B5%AC%EC%A1%B0)
-- [포스트맨 API 문서](https://documenter.getpostman.com/view/11926984/TzY7dtBd)
+[👓이슈트래커 전체 사용 영상](https://youtu.be/C116TaSK6DM)
 
-## 데이터베이스 구조
-- [스키마](https://github.com/janeljs/issue-tracker/wiki/%5BBE%5D)
+<br/>
 
-## VPC
-- [VPC 설정](https://github.com/janeljs/issue-tracker/wiki/AWS-VPC)
-
-## 배포 자동화
-
-- [AWS Code deploy, S3와 GitHub Action을 이용한 배포 자동화](https://github.com/janeljs/issue-tracker/wiki/AWS-Code-deploy,-S3%EC%99%80-GitHub-Action%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94)
+# Project Retrospective
+- [프로젝트 회고](https://github.com/janeljs/issue-tracker/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0)
