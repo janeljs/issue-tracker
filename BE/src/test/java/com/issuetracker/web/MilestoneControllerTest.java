@@ -5,8 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.issuetracker.domain.milestone.Milestone;
 import com.issuetracker.domain.milestone.MilestoneRepository;
 import com.issuetracker.web.dto.response.MilestoneDTO;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +23,7 @@ class MilestoneControllerTest extends BaseControllerTest {
 
     @Test
     @Transactional
+    @Order(1)
     @DisplayName("마일스톤 조회")
     void read() throws Exception {
         String url = "http://localhost:" + port + "/api/milestones";
@@ -31,7 +31,6 @@ class MilestoneControllerTest extends BaseControllerTest {
                 .param("status", "open")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.labelsCount").value(3))
                 .andExpect(jsonPath("$.openedMilestonesCount").value(3))
                 .andExpect(jsonPath("$.closedMilestonesCount").value(0))
                 .andExpect(jsonPath("$.milestones[0].id").value(1))
@@ -41,6 +40,7 @@ class MilestoneControllerTest extends BaseControllerTest {
 
     @Test
     @Transactional
+    @Order(2)
     @DisplayName("마일스톤 생성")
     void create() throws Exception {
         String url = "http://localhost:" + port + "/api/milestones";
