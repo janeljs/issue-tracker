@@ -1,4 +1,4 @@
-package com.issuetracker.service;
+package com.issuetracker.web;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,15 +6,14 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.FileInputStream;
-import java.lang.*;
 import java.io.File;
+import java.io.FileInputStream;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class ImageServiceTest extends BaseServiceTest {
+class ImageControllerTest extends BaseControllerTest {
 
     @Test
     @Transactional

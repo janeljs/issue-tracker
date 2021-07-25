@@ -1,4 +1,4 @@
-package com.issuetracker.service;
+package com.issuetracker.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.issuetracker.domain.label.Color;
@@ -6,23 +6,22 @@ import com.issuetracker.domain.label.Label;
 import com.issuetracker.domain.label.LabelRepository;
 import com.issuetracker.exception.LabelNotFoundException;
 import com.issuetracker.web.dto.response.LabelDTO;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class LabelServiceTest extends BaseServiceTest {
+class LabelControllerTest extends BaseControllerTest {
 
     @Autowired
     private LabelRepository labelRepository;
 
     @Test
+    @Order(1)
     @DisplayName("라벨 전체 조회")
     void read() throws Exception {
         String url = "http://localhost:" + port + "/api/labels";
@@ -31,7 +30,6 @@ class LabelServiceTest extends BaseServiceTest {
                 .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcImlzc3VlLXRyYWNrZXItdGVhbS0wNlwiIiwidXNlcklkIjoxfQ.WCMSnjyZCjZ80aSBN9GCNckS8Q_FkdpWXPWJwsx3kVA"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.labelsCount").value(3))
-                .andExpect(jsonPath("$.milestonesCount").value(3))
                 .andExpect(jsonPath("$.labels[0].id").value(1))
                 .andExpect(jsonPath("$.labels[0].name").value("bug"))
                 .andExpect(jsonPath("$.labels[0].color.backgroundColorCode").value("#F47378"))
@@ -42,6 +40,7 @@ class LabelServiceTest extends BaseServiceTest {
 
     @Test
     @Transactional
+    @Order(2)
     @DisplayName("라벨 생성")
     void create() throws Exception {
         String name = "enhancement";
